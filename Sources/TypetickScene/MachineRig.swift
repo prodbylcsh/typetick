@@ -233,7 +233,7 @@ public final class MachineRig {
                     var mat = Materials.material(role: "keyTop", palette: v.palette)
                     mat.baseColor = .init(tint: .white, texture: .init(tex))
                     if var model = top.components[ModelComponent.self] {
-                        model.materials = [mat]
+                        model.materials = [Materials.realistic(mat, role: "keyTop")]
                         top.components.set(model)
                     }
                 }

@@ -36,7 +36,7 @@ final class WorkshopPreview {
     let stage = Stage(turntable: true)
     private var config: MachineConfiguration?
 
-    func show(_ config: MachineConfiguration, desk: DeskStyle, environment: EnvironmentStyle) {
+    func show(_ config: MachineConfiguration, desk: DeskStyle, environment: EnvironmentStyle, look: RenderLook) {
         if config != self.config {
             self.config = config
             let lib = ComponentLibrary.shared
@@ -48,6 +48,7 @@ final class WorkshopPreview {
         }
         stage.environment.apply(desk: desk)
         stage.environment.apply(environment: environment, to: stage.view)
+        stage.apply(look: look)
     }
 }
 
@@ -121,7 +122,8 @@ struct MachineEditor: View {
     }
 
     private func refresh() {
-        preview.show(model.preferences.machine, desk: model.preferences.desk, environment: model.preferences.environment)
+        preview.show(model.preferences.machine, desk: model.preferences.desk, environment: model.preferences.environment,
+                     look: model.preferences.look)
     }
 
     private func shuffle() {
@@ -427,6 +429,26 @@ struct LightingEditor: View {
                     LabeledSlider("Color temperature", value: $model.preferences.environment.lampKelvin, range: 1800...6500, format: "%.0f K")
                 }
                 LabeledSlider("Brightness", value: $model.preferences.environment.lampIntensity, range: 0...2)
+            }
+            Section("Camera & Film") {
+                PresetRow(names: RenderLook.presets.map(\.0)) { i in model.preferences.look = RenderLook.presets[i].1 }
+                Picker("Quality", selection: $model.preferences.look.quality) {
+                    ForEach(RenderLook.Quality.allCases) { Text($0.title).tag($0) }
+                }
+                .pickerStyle(.segmented)
+                LabeledSlider("Contact shadows", value: $model.preferences.look.ambientOcclusion, help: "Screen space ambient occlusion")
+                LabeledSlider("Bloom", value: $model.preferences.look.bloom)
+                LabeledSlider("Light shafts", value: $model.preferences.look.lightShafts)
+                LabeledSlider("Exposure", value: $model.preferences.look.exposure, range: -1.5...1.5, format: "%+.1f EV")
+                LabeledSlider("Contrast", value: $model.preferences.look.contrast)
+                LabeledSlider("Saturation", value: $model.preferences.look.saturation, range: 0...1.6)
+                LabeledSlider("Split toning", value: $model.preferences.look.toning)
+                LabeledSlider("Vignette", value: $model.preferences.look.vignette)
+                LabeledSlider("Film grain", value: $model.preferences.look.filmGrain, range: 0...0.1, format: "%.3f")
+                LabeledSlider("Lens fringing", value: $model.preferences.look.chromaticAberration, range: 0...0.02, format: "%.3f")
+                LabeledSlider("Sharpen", value: $model.preferences.look.sharpen)
+                LabeledSlider("Dust & wear", value: $model.preferences.look.surfaceWear, help: "Dust on top faces, fingerprints and micro detail (rebuilds the machine)")
+                Toggle("Dust motes in the lamp light", isOn: $model.preferences.look.dustMotes)
             }
             Section("View") {
                 Picker("Seat", selection: $model.preferences.framing) {

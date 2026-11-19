@@ -73,6 +73,11 @@ final class MachineController {
         if force || p.framing != old?.framing { stage.environment.setFraming(p.framing) }
         if force || p.desk != old?.desk { stage.environment.apply(desk: p.desk) }
         if force || p.environment != old?.environment { stage.environment.apply(environment: p.environment, to: stage.view) }
+        if force || p.look != old?.look {
+            let rebuild = old != nil && p.look.surfaceWear != old?.look.surfaceWear
+            stage.apply(look: p.look)
+            if rebuild { rebuildMachine() }
+        }
     }
 
     private func rebuildMachine() {

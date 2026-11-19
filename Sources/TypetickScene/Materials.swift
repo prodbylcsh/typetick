@@ -102,14 +102,60 @@ public enum Materials {
         make(Look(color: c, metallic: metallic, roughness: roughness))
     }
 
+    // MARK: realistic surfaces (Metal surface shader)
+
+    /// Global wear amount (0...1) applied to dust and smudges.
+    public static var wear: Float = 0.6
+    /// Set to false to compare against plain PBR.
+    public static var useSurfaceShader = true
+
+    /// dust, smudge, micro detail, clear coat
+    static let wearProfile: [String: SIMD4<Float>] = [
+        "paint": SIMD4(0.55, 0.25, 0.6, 0.85), "paintSecond": SIMD4(0.5, 0.25, 0.6, 0.75),
+        "paintAccent": SIMD4(0.3, 0.2, 0.4, 0.3), "chrome": SIMD4(0.25, 0.6, 0.3, 0),
+        "steel": SIMD4(0.4, 0.35, 1.0, 0), "blackSteel": SIMD4(0.5, 0.3, 0.8, 0),
+        "brass": SIMD4(0.35, 0.55, 0.6, 0), "copper": SIMD4(0.35, 0.5, 0.6, 0),
+        "rubber": SIMD4(0.7, 0.1, 1.0, 0), "redRubber": SIMD4(0.7, 0.1, 1.0, 0),
+        "bakelite": SIMD4(0.35, 0.5, 0.4, 0.9), "keyTop": SIMD4(0.12, 0.7, 0.3, 0.6),
+        "keyBody": SIMD4(0.35, 0.4, 0.5, 0.4), "felt": SIMD4(0.3, 0, 1, 0),
+        "plastic": SIMD4(0.45, 0.3, 0.5, 0.2), "darkPlastic": SIMD4(0.5, 0.3, 0.5, 0.1),
+        "wood": SIMD4(0.3, 0.2, 0.8, 0.5), "enamel": SIMD4(0.2, 0.3, 0.3, 1),
+        "scale": SIMD4(0.3, 0.2, 0.3, 0.2),
+    ]
+
+    private static var surfaceShader: CustomMaterial.SurfaceShader? = {
+        guard let device = MTLCreateSystemDefaultDevice() else { return nil }
+        do {
+            let lib = try device.makeDefaultLibrary(bundle: Bundle.module)
+            return CustomMaterial.SurfaceShader(named: "typetickSurface", in: lib)
+        } catch {
+            NSLog("Typetick: surface shader library unavailable (\(error)); using plain PBR")
+            return nil
+        }
+    }()
+
+    /// Wraps a PBR material in the wear/dust surface shader when available.
+    public static func realistic(_ pbr: PhysicallyBasedMaterial, role: String) -> any RealityKit.Material {
+        guard useSurfaceShader, let shader = surfaceShader, var profile = wearProfile[role] else { return pbr }
+        do {
+            var m = try CustomMaterial(from: pbr, surfaceShader: shader)
+            profile.x *= wear * 1.6
+            profile.y *= wear * 1.6
+            m.custom.value = profile
+            return m
+        } catch {
+            return pbr
+        }
+    }
+
     /// Re-materializes every mesh below `entity` from its role suffix.
     public static func apply(to entity: Entity, palette: [String: [Double]], overrides: [String: PhysicallyBasedMaterial] = [:]) {
-        var cache: [String: PhysicallyBasedMaterial] = [:]
+        var cache: [String: any RealityKit.Material] = [:]
         func visit(_ e: Entity) {
             if var model = e.components[ModelComponent.self] {
                 let role = roleName(of: e)
                 if let role = role {
-                    let mat = overrides[role] ?? cache[role] ?? material(role: role, palette: palette)
+                    let mat = cache[role] ?? realistic(overrides[role] ?? material(role: role, palette: palette), role: role)
                     cache[role] = mat
                     model.materials = Array(repeating: mat, count: max(1, model.materials.count))
                     e.components.set(model)

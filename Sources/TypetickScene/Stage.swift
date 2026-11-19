@@ -107,8 +107,15 @@ public final class StageEnvironment {
     private var turntablePitch: Float = 0.45
     private var turntableDistance: Float = 0.85
     private var lastDesk: DeskStyle?
+    private let motes = Entity()
+    private var envGeneration = 0
+    private var showMotes = true
+    public private(set) var lampWorldPosition = SIMD3<Float>(-0.42, 0.42, -0.22)
+    public private(set) var lampColor = SIMD3<Float>(1, 0.8, 0.6)
 
     public init() {
+        root.addChild(motes)
+        setUpMotes()
         root.addChild(desk)
         root.addChild(lamp)
         root.addChild(fill)
@@ -117,6 +124,30 @@ public final class StageEnvironment {
         desk.model = ModelComponent(mesh: .generatePlane(width: 2.4, depth: 1.6, cornerRadius: 0.02),
                                     materials: [Materials.solid(RGB(0.3, 0.18, 0.1))])
         desk.position = SIMD3(0, -0.0005, 0)
+    }
+
+    /// Dust floating in the lamp light. Tiny additive specks drifting slowly.
+    private func setUpMotes() {
+        var p = ParticleEmitterComponent()
+        p.emitterShape = .box
+        p.emitterShapeSize = SIMD3(0.7, 0.45, 0.5)
+        p.birthLocation = .volume
+        p.speed = 0.002
+        p.mainEmitter.birthRate = 35
+        p.mainEmitter.lifeSpan = 14
+        p.mainEmitter.size = 0.00045
+        p.mainEmitter.color = .constant(.single(NSColor(white: 1, alpha: 0.35)))
+        p.mainEmitter.blendMode = .additive
+        p.mainEmitter.noiseStrength = 0.004
+        p.mainEmitter.noiseScale = 0.5
+        p.mainEmitter.opacityCurve = .gradualFadeInOut
+        motes.components.set(p)
+        motes.position = SIMD3(-0.12, 0.3, -0.1)
+    }
+
+    public func setDustMotes(_ on: Bool) {
+        showMotes = on
+        motes.isEnabled = on
     }
 
     public func setFraming(_ f: StageFraming) {
@@ -215,14 +246,25 @@ public final class StageEnvironment {
         let sunDir: SIMD3<Float> = env.timeOfDay == .day ? SIMD3(-0.8, 1.6, -0.6) : SIMD3(-1.2, 0.6, -0.5)
         window.look(at: .zero, from: sunDir, relativeTo: nil)
 
-        if let img = ProceduralTextures.environment(env), let res = try? EnvironmentResource.generate(fromEquirectangular: img) {
-            view.environment.lighting.resource = res
+        // The HDR room takes a moment to paint: do it off the main thread.
+        envGeneration += 1
+        let generation = envGeneration
+        Task.detached(priority: .utility) {
+            let img = ProceduralTextures.environmentHDR(env) ?? ProceduralTextures.environment(env)
+            await MainActor.run { [weak self, weak view] in
+                guard let self = self, let view = view, generation == self.envGeneration, let img = img,
+                      let res = try? EnvironmentResource.generate(fromEquirectangular: img) else { return }
+                view.environment.lighting.resource = res
+            }
         }
+        lampWorldPosition = lampPos
+        lampColor = SIMD3(Float(lampRGB.r), Float(lampRGB.g), Float(lampRGB.b)) * (env.lamp == .none ? 0 : 1)
+        motes.isEnabled = showMotes && env.lamp != .none
         let exposure: Float
         switch env.timeOfDay {
-        case .day: exposure = 0.6
-        case .dawn, .dusk: exposure = 0.0
-        case .night: exposure = -1.2
+        case .day: exposure = -0.4
+        case .dawn, .dusk: exposure = -0.6
+        case .night: exposure = -0.8
         }
         view.environment.lighting.intensityExponent = exposure + Float(env.ambient - 0.5)
         let bg = env.timeOfDay == .night ? RGB(0.02, 0.02, 0.025) : RGB(0.09, 0.08, 0.075)
@@ -239,12 +281,14 @@ public final class Stage {
     private let anchor = AnchorEntity(world: .zero)
     private var updates: Cancellable?
     private let turntableRoot = Entity()
+    public let post = PostProcessor()
 
     public init(turntable: Bool = false) {
         view = StageView(frame: NSRect(x: 0, y: 0, width: 800, height: 600))
         view.turntable = turntable
         view.renderOptions.insert(.disableMotionBlur)
         view.renderOptions.insert(.disableDepthOfField)
+        post.install(on: view)
         anchor.addChild(environment.root)
         anchor.addChild(turntableRoot)
         view.scene.addAnchor(anchor)
@@ -254,9 +298,26 @@ public final class Stage {
         }
         updates = view.scene.subscribe(to: SceneEvents.Update.self) { [weak self] event in
             MainActor.assumeIsolated {
-                self?.rig?.tick(event.deltaTime)
+                guard let self = self else { return }
+                self.rig?.tick(event.deltaTime)
+                self.updateLampProjection()
             }
         }
+    }
+
+    /// Camera, film and surface wear settings.
+    public func apply(look: RenderLook) {
+        post.look = look
+        Materials.wear = Float(look.surfaceWear)
+        environment.setDustMotes(look.dustMotes)
+    }
+
+    private func updateLampProjection() {
+        let b = view.bounds
+        guard b.width > 0, b.height > 0, let p = view.project(environment.lampWorldPosition) else { return }
+        var uv = SIMD2<Float>(Float(p.x / b.width), Float(p.y / b.height))
+        if !view.isFlipped { uv.y = 1 - uv.y }
+        post.setLamp(uv: uv, color: environment.lampColor)
     }
 
     public func install(_ rig: MachineRig) {

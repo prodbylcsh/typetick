@@ -54,6 +54,41 @@ Esc or ⌘. stops the recorder.
 
 The writing view never orbits. *Seat* (Close, Seated, Whole Desk) picks one of three fixed camera positions.
 
+## Rendering
+
+RealityKit does the physically based lighting. Typetick adds its own Metal stages on top of it.
+
+* **Surface shader** (`Sources/TypetickScene/Shaders/Surface.metal`, a RealityKit `CustomMaterial`), evaluated in object space so the wear moves with each part:
+  * dust that settles only on upward facing surfaces
+  * fingerprints and smudges that change roughness on chrome, keys and bakelite
+  * micro normal and roughness breakup: orange peel paint, brushed steel, rubber grain
+  * clear coat on enamel and lacquer
+* **Post-processing chain** (`Rendering/PostProcessor.swift`, through `ARView.renderCallbacks`; the shaders are compiled at runtime):
+  * SSAO with a bilateral blur, for contact shadows in every gap between keys, typebars and levers
+  * dual-filter bloom
+  * light shafts from the lamp
+  * filmic shoulder and S-curve, split toning, vignette, subtle lens fringing and film grain
+  * FXAA with light contrast-adaptive sharpening
+* **HDR environment**: a procedural linear-float room (plaster, bookcase, a window with sky or a neon-lit night city, the lamp's hot bulb) for image based lighting and reflections. Shadows come from a shadow-casting spot lamp and the window sun. Dust motes drift in the lamp light.
+
+Presets in Workshop → Lighting → *Camera & Film*: Cinematic, Natural, Noir, Neon Night, plus every parameter.
+
+If a GPU or OS build cannot compile the surface shader, the parts fall back to plain PBR. If the post shaders fail, the frame is passed through untouched.
+
+### Look-development reference (Blender Cycles)
+
+To check what the scene should look like without a Mac, I render the same assembled machine path traced in Blender. It uses matching materials and the app's *Seated* camera. Install `bpy` (the Blender Python module) first, then:
+
+```bash
+python3 Tools/ModelForge/preview.py export /tmp/machine.npz
+```
+
+```bash
+python Tools/ModelForge/lookdev.py /tmp/machine.npz lookdev.png 160 1800 1125
+```
+
+The first command can take `kind=variant` arguments to pick other parts.
+
 ## 3D format: why USD
 
 Components are **USD**: `.usdz` in the app bundle, with human-readable `.usda` sources from the generator. USD is the native 3D interchange format on Apple platforms:
@@ -72,7 +107,7 @@ Every component file follows a small contract the app relies on:
 
 * Built-in library: `Sources/TypetickScene/Resources/Components/<kind>/` (`.usdz` + `manifest.json`).
 * Generator: `Tools/ModelForge` (Python + `usd-core`). `python3 Tools/ModelForge/build.py [kind ...]` rebuilds the library and writes `.usda` sources to `Tools/ModelForge/out/`.
-* Software preview without a GPU:
+* Quick geometry checks without a GPU (flat shaded, no shadows or anti-aliasing; not representative of the app's look):
   * `python3 Tools/ModelForge/preview.py sheet out.png` renders a contact sheet of all 96 variants.
   * `python3 Tools/ModelForge/preview.py machine out.png carriage=wide_ledger keys=hex_brass` renders an assembled machine with the same layout rules as the app.
 * Your own components: put a `manifest.json` and model files in `~/Library/Application Support/Typetick/Components/<kind>/` (Workshop → *Custom Components Folder*). A variant with an existing id replaces the built-in one; new ids show up as extra choices. Click *Reload Library* to pick up changes.

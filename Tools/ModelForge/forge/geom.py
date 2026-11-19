@@ -233,7 +233,11 @@ def rounded_box(sx: float, sy: float, sz: float, r: float = 0.0, band: int = 3,
                 center: Vec3 = (0.0, 0.0, 0.0)) -> Mesh:
     """Box of full size (sx, sy, sz) with every edge rounded by radius r."""
     hx, hy, hz = sx / 2, sy / 2, sz / 2
+    # Nothing manufactured has a razor edge; a minimum bevel catches highlights.
+    r = max(r, min(0.0006, min(hx, hy, hz) * 0.35))
     r = max(0.0, min(r, hx * 0.999, hy * 0.999, hz * 0.999))
+    if min(hx, hy, hz) < 0.0015:
+        band = 1   # tiny parts (teeth, ticks): one bevel step is plenty
     xs = _axis_samples(hx, r, 1, band)
     ys = _axis_samples(hy, r, 1, band)
     zs = _axis_samples(hz, r, 1, band)
@@ -276,7 +280,7 @@ def rounded_box(sx: float, sy: float, sz: float, r: float = 0.0, band: int = 3,
 
 
 def box(sx: float, sy: float, sz: float, center: Vec3 = (0.0, 0.0, 0.0)) -> Mesh:
-    return rounded_box(sx, sy, sz, 0.0, center=center)
+    return rounded_box(sx, sy, sz, 0.0, band=2, center=center)
 
 
 def _fix_winding_outward(m: Mesh, center: Vec3) -> None:
@@ -297,7 +301,7 @@ def add_all(ps: Sequence[Vec3]) -> Vec3:
     return acc
 
 
-def lathe(profile: Sequence[Vec2], segments: int = 48, start_deg: float = 0.0,
+def lathe(profile: Sequence[Vec2], segments: int = 72, start_deg: float = 0.0,
           sweep_deg: float = 360.0, cap_start: bool = True, cap_end: bool = True) -> Mesh:
     """Revolve a (radius, y) profile around the Y axis.
 
@@ -358,9 +362,11 @@ def lathe(profile: Sequence[Vec2], segments: int = 48, start_deg: float = 0.0,
     return m
 
 
-def cylinder(radius: float, height: float, segments: int = 40, bevel: float = 0.0,
+def cylinder(radius: float, height: float, segments: int = 56, bevel: float = 0.0,
              center: Vec3 = (0.0, 0.0, 0.0), axis: str = "y") -> Mesh:
     h = height / 2
+    if bevel <= 0:
+        bevel = min(0.0004, radius * 0.2, h * 0.3)
     if bevel > 0:
         b = min(bevel, radius * 0.5, h * 0.9)
         prof = [(0.0, -h), (radius - b, -h), (radius - b * 0.3, -h + b * 0.3), (radius, -h + b),
@@ -379,7 +385,7 @@ def orient_axis(m: Mesh, axis: str) -> Mesh:
     return m
 
 
-def torus(R: float, r: float, seg: int = 40, sides: int = 14) -> Mesh:
+def torus(R: float, r: float, seg: int = 64, sides: int = 16) -> Mesh:
     prof = []
     for i in range(sides + 1):
         a = math.radians(-90 + 360.0 * i / sides)

@@ -19,7 +19,7 @@ let package = Package(
         .target(
             name: "TypetickScene",
             dependencies: ["TypetickCore"],
-            resources: [.copy("Resources/Components")]
+            resources: [.copy("Resources/Components"), .process("Shaders/Surface.metal")]
         ),
         // The macOS app.
         .executableTarget(

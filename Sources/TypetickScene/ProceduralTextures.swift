@@ -232,3 +232,108 @@ public enum ProceduralTextures {
         return ctx.makeImage()
     }
 }
+
+// MARK: - HDR environment
+
+extension ProceduralTextures {
+    /// Linear HDR equirectangular room used for reflections and image based
+    /// lighting: plaster walls, a bookcase, a window with sky (or a night city
+    /// full of neon), the lamp's hot bulb and glowing shade.
+    public static func environmentHDR(_ env: EnvironmentStyle, width: Int = 1024) -> CGImage? {
+        let w = width, h = width / 2
+        var px = [Float](repeating: 0, count: w * h * 4)
+        let n = Noise(seed: 0xE7E7)
+        var rng = SplitMix(seed: 0xB00C)
+        func v3(_ c: RGB) -> SIMD3<Float> { SIMD3(Float(c.r), Float(c.g), Float(c.b)) }
+        let lamp = env.lamp == .neon ? v3(env.neonColor) : v3(EnvironmentStyle.kelvinToRGB(env.lampKelvin))
+        let lampI = Float(env.lampIntensity)
+        let amb = Float(0.4 + env.ambient)
+        let night = env.timeOfDay == .night
+        let skyTop: SIMD3<Float>, skyLow: SIMD3<Float>, skyI: Float
+        switch env.timeOfDay {
+        case .dawn: skyTop = SIMD3(0.45, 0.55, 0.85); skyLow = SIMD3(1.0, 0.62, 0.42); skyI = 3.5
+        case .day: skyTop = SIMD3(0.35, 0.55, 1.0); skyLow = SIMD3(0.85, 0.92, 1.0); skyI = 9
+        case .dusk: skyTop = SIMD3(0.25, 0.25, 0.55); skyLow = SIMD3(1.0, 0.45, 0.25); skyI = 2.5
+        case .night: skyTop = SIMD3(0.01, 0.015, 0.04); skyLow = SIMD3(0.05, 0.03, 0.08); skyI = 1
+        }
+        let wallBase = SIMD3<Float>(0.62, 0.52, 0.40) * (night ? 0.03 : 0.10) * amb
+        // bookcase spines behind the typist
+        var books: [(Float, Float, Float, SIMD3<Float>)] = []   // lon0, lon1, top lat, color
+        var lon: Float = 2.3
+        while lon < 4.0 {
+            let wdt = 0.02 + rng.unit() * 0.035
+            let col = SIMD3<Float>(0.2 + rng.unit() * 0.6, 0.12 + rng.unit() * 0.3, 0.08 + rng.unit() * 0.3)
+            books.append((lon, lon + wdt, 0.05 + rng.unit() * 0.12, col))
+            lon += wdt + 0.003
+        }
+        // city lights for night windows
+        var city: [(SIMD2<Float>, SIMD3<Float>, Float)] = []
+        for _ in 0..<140 {
+            let c: SIMD3<Float> = [SIMD3(1, 0.25, 0.6), SIMD3(0.2, 0.9, 1), SIMD3(1, 0.8, 0.4), SIMD3(0.6, 0.3, 1)][Int(rng.unit() * 3.99)]
+            city.append((SIMD2(-1.25 + (rng.unit() - 0.5) * 0.85, 0.02 + rng.unit() * 0.45), c, 0.004 + rng.unit() * 0.01))
+        }
+        for y in 0..<h {
+            let lat = (0.5 - (Float(y) + 0.5) / Float(h)) * .pi
+            for x in 0..<w {
+                let lo = ((Float(x) + 0.5) / Float(w)) * 2 * .pi - .pi
+                var c: SIMD3<Float>
+                if lat < -0.08 {
+                    // floor boards
+                    let board = n.fbm(lo * 30, lat * 3, octaves: 3, period: 64)
+                    c = SIMD3(0.30, 0.17, 0.09) * (0.5 + board) * (night ? 0.02 : 0.06) * amb
+                } else if lat > 1.15 {
+                    c = wallBase * 0.8
+                } else {
+                    let plaster = 0.85 + 0.3 * n.fbm(lo * 12, lat * 12, octaves: 4, period: 64)
+                    c = wallBase * plaster
+                    if lat < 0.25 { c *= 0.7 }   // wainscot
+                }
+                // bookcase
+                let l2 = lo < 0 ? lo + 2 * .pi : lo
+                if l2 >= 2.3 && l2 < 4.0 && lat > 0.2 && lat < 0.42, let b = books.first(where: { l2 >= $0.0 && l2 < $0.1 && lat < $0.2 + 0.25 }) {
+                    c = b.3 * (night ? 0.01 : 0.05) * amb * (0.7 + 0.6 * n.value(l2 * 300, lat * 20, period: 512))
+                }
+                // window on the left wall
+                if env.windowLight || night {
+                    let dl = lo - (-1.25), dlat = lat - 0.28
+                    if abs(dl) < 0.42 && abs(dlat) < 0.33 {
+                        let t = (dlat + 0.33) / 0.66
+                        var sky = simd_mix(skyLow, skyTop, SIMD3(repeating: t)) * skyI
+                        if night {
+                            for cl in city where abs(cl.0.x - lo) < cl.2 && abs(cl.0.y - lat) < cl.2 * 1.6 {
+                                sky += cl.1 * 6
+                            }
+                            // a big neon sign across the street
+                            if abs(lat - 0.18) < 0.012 && lo > -1.45 && lo < -1.1 { sky += SIMD3(1, 0.15, 0.55) * 14 }
+                        }
+                        if env.timeOfDay != .night {
+                            let ds = simd_length(SIMD2(lo + 1.32, lat - 0.42))
+                            sky += SIMD3(1, 0.9, 0.75) * max(0, 1 - ds * 9) * (env.timeOfDay == .day ? 120 : 40)
+                        }
+                        let mullion = abs(dl) < 0.008 || abs(dlat) < 0.006 || abs(dl) > 0.41 || abs(dlat) > 0.32
+                        c = mullion ? wallBase * 0.4 : sky
+                    } else {
+                        // daylight spilling around the window
+                        let d = simd_length(SIMD2(dl / 1.2, dlat / 0.9))
+                        c += simd_mix(skyLow, skyTop, SIMD3(repeating: 0.5)) * skyI * 0.05 * max(0, 1 - d)
+                    }
+                }
+                // the lamp (up and to the left/back of the machine)
+                if env.lamp != .none {
+                    let ds = simd_length(SIMD2(lo + 0.95, lat - 0.55))
+                    c += lamp * lampI * (max(0, 1 - ds * 6) * 1.5 + max(0, 1 - ds * 28) * 60)
+                    if env.lamp == .neon && abs(lat - 0.35) < 0.01 && lo > 0.4 && lo < 1.2 { c += lamp * 18 * lampI }
+                }
+                let i = (y * w + x) * 4
+                px[i] = c.x; px[i + 1] = c.y; px[i + 2] = c.z; px[i + 3] = 1
+            }
+        }
+        guard let space = CGColorSpace(name: CGColorSpace.extendedLinearSRGB) else { return nil }
+        let data = px.withUnsafeBufferPointer { Data(buffer: $0) }
+        guard let provider = CGDataProvider(data: data as CFData) else { return nil }
+        let info = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.floatComponents.rawValue |
+                                CGBitmapInfo.byteOrder32Little.rawValue)
+        return CGImage(width: w, height: h, bitsPerComponent: 32, bitsPerPixel: 128, bytesPerRow: w * 16, space: space,
+                       bitmapInfo: info, provider: provider, decode: nil, shouldInterpolate: true, intent: .defaultIntent)
+    }
+}

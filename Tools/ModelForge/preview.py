@@ -47,11 +47,12 @@ class Model:
         stage = Usd.Stage.Open(path)
         root = stage.GetDefaultPrim()
         self.parts = {}
+        self.extra = {}
         cache = UsdGeom.XformCache()
         for top in root.GetChildren():
             if top.GetName() == "Looks":
                 continue
-            tris, cols = [], []
+            tris, cols, nrms, roles = [], [], [], []
             top_inv = cache.GetLocalToWorldTransform(top).GetInverse()
             top_local = cache.GetLocalToWorldTransform(top)
             for prim in Usd.PrimRange(top):
@@ -67,6 +68,9 @@ class Model:
                 ph = np.c_[pts, np.ones(len(pts))] @ m
                 pts = ph[:, :3]
                 role = prim.GetName().split("__")[-1]
+                nv = UsdGeom.PrimvarsAPI(mesh).GetPrimvar("normals").Get()
+                nmat = np.array(xf * top_inv * Gf.Matrix4d(top_local.ExtractRotationMatrix(), top_local.ExtractTranslation()))[:3, :3]
+                cn = (np.array(nv, dtype=np.float64) @ nmat) if nv is not None else None
                 spec = dict(ROLE_DEFAULTS.get(role, ROLE_DEFAULTS["paint"]))
                 color = palette.get(role, spec["color"])
                 k = 0
@@ -75,8 +79,14 @@ class Model:
                     for j in range(1, c - 1):
                         tris.append([pts[face[0]], pts[face[j]], pts[face[j + 1]]])
                         cols.append((color, spec["metallic"], spec["roughness"]))
+                        roles.append(role)
+                        if cn is not None:
+                            nrms.append([cn[k], cn[k + j], cn[k + j + 1]])
+                        else:
+                            nrms.append([[0, 1, 0]] * 3)
                     k += c
             self.parts[top.GetName()] = (np.array(tris).reshape(-1, 3, 3), cols, top_local)
+            self.extra[top.GetName()] = (np.array(nrms).reshape(-1, 3, 3), roles)
 
 
 def mat_t(x, y, z):
@@ -126,6 +136,8 @@ class Scene:
     def __init__(self):
         self.tris = []
         self.cols = []
+        self.normals = []
+        self.roles = []
 
     def add(self, model, part, m=np.eye(4), skip_local=False):
         tris, cols, local = model.parts[part]
@@ -139,10 +151,41 @@ class Scene:
         out = (np.c_[flat, np.ones(len(flat))] @ m)[:, :3]
         self.tris.append(out.reshape(-1, 3, 3))
         self.cols.extend(cols)
+        nrm, roles = model.extra[part]
+        nm = np.linalg.inv(m[:3, :3]).T if not skip_local else np.linalg.inv((np.linalg.inv(np.array(Gf.Matrix4d(local.ExtractRotationMatrix(), local.ExtractTranslation()))) @ m)[:3, :3]).T
+        n2 = nrm.reshape(-1, 3) @ nm
+        n2 /= np.maximum(np.linalg.norm(n2, axis=1, keepdims=True), 1e-9)
+        self.normals.append(n2.reshape(-1, 3, 3))
+        self.roles.extend(roles)
 
-    def add_tris(self, tris, color):
-        self.tris.append(np.array(tris).reshape(-1, 3, 3))
-        self.cols.extend([(color, 0.0, 0.8)] * len(tris))
+    def add_tris(self, tris, color, role="paper", uvs=None):
+        t = np.array(tris).reshape(-1, 3, 3)
+        self.tris.append(t)
+        self.cols.extend([(color, 0.0, 0.8)] * len(t))
+        e1, e2 = t[:, 1] - t[:, 0], t[:, 2] - t[:, 0]
+        n = np.cross(e1, e2)
+        n /= np.maximum(np.linalg.norm(n, axis=1, keepdims=True), 1e-12)
+        self.normals.append(np.repeat(n[:, None, :], 3, axis=1))
+        self.roles.extend([role] * len(t))
+        if uvs is not None:
+            self.paper_uv = np.array(uvs).reshape(-1, 3, 2)
+
+    def export(self, path, palettes):
+        """Dump triangles grouped by role for the Blender look-dev render."""
+        tris = np.concatenate(self.tris)
+        nrm = np.concatenate(self.normals)
+        roles = np.array(self.roles)
+        cols = np.array([c[0] for c in self.cols], dtype=np.float64)
+        out = {}
+        for role in sorted(set(self.roles)):
+            sel = roles == role
+            out[f"{role}__pos"] = tris[sel].astype(np.float32)
+            out[f"{role}__nrm"] = nrm[sel].astype(np.float32)
+            out[f"{role}__col"] = cols[sel].astype(np.float32)
+        if hasattr(self, "paper_uv"):
+            out["paper__uv"] = self.paper_uv.astype(np.float32)
+            out["paper__vprint"] = np.array([self.paper_vprint], dtype=np.float32)
+        np.savez_compressed(path, **out)
 
     def render(self, path, eye, target, fov=32.0, size=(1200, 860), bg=(0.16, 0.13, 0.11)):
         W, H = size
@@ -238,8 +281,9 @@ def keyboard_positions(kb):
     return keys
 
 
-def assemble(sel):
+def assemble(sel, no_desk=False):
     sc = Scene()
+    sc.no_desk = no_desk
     load = {}
 
     def model(kind):
@@ -332,7 +376,8 @@ def assemble(sel):
     for p in rec.parts:
         sc.add(rec, p, mat_t(*A["recorder"]))
     # desk
-    sc.add_tris([[(-0.6, 0, -0.5), (0.6, 0, -0.5), (0.6, 0, 0.5)], [(-0.6, 0, -0.5), (0.6, 0, 0.5), (-0.6, 0, 0.5)]], (0.35, 0.22, 0.13))
+    if not getattr(sc, "no_desk", False):
+        sc.add_tris([[(-0.6, 0, -0.5), (0.6, 0, -0.5), (0.6, 0, 0.5)], [(-0.6, 0, -0.5), (0.6, 0, 0.5), (-0.6, 0, 0.5)]], (0.35, 0.22, 0.13), "desk")
     return sc, P
 
 
@@ -352,16 +397,31 @@ def add_paper(sc, cm, Mc):
     S = np.array(pts[0])
     tb = np.array([-math.cos(entry_a), math.sin(entry_a)])
     pts = [tuple(S + tb * 0.012 * i) for i in range(8, 0, -1)] + pts
-    tris = []
+    # arc length of each path point, measured back from the top end
+    seg = [0.0]
+    for i in range(1, len(pts)):
+        seg.append(seg[-1] + math.dist(pts[i], pts[i - 1]))
+    total = seg[-1]
+    top_s = total            # the page's top edge sits at the top end of the path
+    page_h = 0.2794
+    tris, uvs = [], []
     w = 0.2159 / 2
     for i in range(len(pts) - 1):
         (y0, z0), (y1, z1) = pts[i], pts[i + 1]
+        v0 = (top_s - seg[i]) / page_h
+        v1 = (top_s - seg[i + 1]) / page_h
         a, b, c, d = (-w, y0, z0), (w, y0, z0), (w, y1, z1), (-w, y1, z1)
         tris += [[a, b, c], [a, c, d]]
+        uvs += [[(0, v0), (1, v0), (1, v1)], [(0, v0), (1, v1), (0, v1)]]
     tris = np.array(tris)
     flat = tris.reshape(-1, 3)
     flat = (np.c_[flat, np.ones(len(flat))] @ Mc)[:, :3]
-    sc.add_tris(flat.reshape(-1, 3, 3), (0.93, 0.92, 0.88))
+    sc.add_tris(flat.reshape(-1, 3, 3), (0.93, 0.92, 0.88), "paper", uvs)
+    # where the printing line falls on the page (v from the top edge)
+    pa = math.radians(cm["printAngleDegrees"])
+    k = 8 + (pa - entry_a) / (exit_a - entry_a) * 29
+    s_print = seg[int(k)] + (seg[int(k) + 1] - seg[int(k)]) * (k - int(k))
+    sc.paper_vprint = (top_s - s_print) / page_h
 
 
 DEFAULT = dict(chassis="atlas_upright", keys="glass_ring", typebars="slim_steel", carriage="classic_black",
@@ -400,7 +460,15 @@ def sheet(path):
 
 if __name__ == "__main__":
     mode = sys.argv[1]
-    if mode == "sheet":
+    if mode == "export":
+        sel = dict(DEFAULT)
+        for a in sys.argv[3:]:
+            k, v = a.split("=")
+            sel[k] = v
+        sc, P = assemble(sel, no_desk=True)
+        sc.export(sys.argv[2], {})
+        print("exported", sum(len(t) for t in sc.tris), "triangles; print point", P)
+    elif mode == "sheet":
         sheet(sys.argv[2])
     else:
         sel = dict(DEFAULT)
