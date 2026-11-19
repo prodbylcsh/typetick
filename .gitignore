@@ -1,0 +1,9 @@
+.build/
+build/
+.swiftpm/
+*.xcodeproj
+DerivedData/
+Tools/ModelForge/out/
+__pycache__/
+*.pyc
+.DS_Store
