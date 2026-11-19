@@ -1,0 +1,368 @@
+{
+  "kind": "bell",
+  "title": "Bell",
+  "summary": "Margin bell and hammer.",
+  "variants": [
+    {
+      "id": "classic_dome",
+      "name": "Classic Dome",
+      "era": "Classic",
+      "summary": "The bright single ding everyone remembers.",
+      "tags": [],
+      "file": "classic_dome.usdz",
+      "source": "classic_dome.usda",
+      "parts": [
+        "Bell",
+        "pivot_Hammer"
+      ],
+      "mechanics": {
+        "bellOffsetColumns": 7,
+        "partials": [
+          [
+            2380,
+            1.4,
+            1.0
+          ],
+          [
+            5710,
+            0.7,
+            0.45
+          ],
+          [
+            9260,
+            0.35,
+            0.2
+          ],
+          [
+            3190,
+            1.0,
+            0.2
+          ]
+        ],
+        "hammerDegrees": 28.0
+      },
+      "sound": {
+        "pitch": 1.0,
+        "ring": 1.0
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.2
+      },
+      "palette": {}
+    },
+    {
+      "id": "double_gong",
+      "name": "Double Gong",
+      "era": "Office",
+      "summary": "Two domes struck together: a two-tone 'ding-dong' interval.",
+      "tags": [],
+      "file": "double_gong.usdz",
+      "source": "double_gong.usda",
+      "parts": [
+        "Bell",
+        "pivot_Hammer"
+      ],
+      "mechanics": {
+        "bellOffsetColumns": 8,
+        "partials": [
+          [
+            1760,
+            1.6,
+            0.8
+          ],
+          [
+            2640,
+            1.2,
+            0.7
+          ],
+          [
+            4400,
+            0.6,
+            0.3
+          ],
+          [
+            6600,
+            0.35,
+            0.2
+          ]
+        ],
+        "hammerDegrees": 28.0
+      },
+      "sound": {
+        "pitch": 1.0,
+        "ring": 1.0
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.2
+      },
+      "palette": {}
+    },
+    {
+      "id": "bicycle",
+      "name": "Bicycle Bell",
+      "era": "Street",
+      "summary": "Ridged chrome dome with a nervous double-strike.",
+      "tags": [],
+      "file": "bicycle.usdz",
+      "source": "bicycle.usda",
+      "parts": [
+        "Bell",
+        "pivot_Hammer"
+      ],
+      "mechanics": {
+        "bellOffsetColumns": 6,
+        "partials": [
+          [
+            3150,
+            0.9,
+            1.0
+          ],
+          [
+            7400,
+            0.4,
+            0.5
+          ],
+          [
+            4820,
+            0.6,
+            0.3
+          ]
+        ],
+        "hammerDegrees": 34.0,
+        "strikes": 2
+      },
+      "sound": {
+        "pitch": 1.0,
+        "ring": 0.8
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.2
+      },
+      "palette": {}
+    },
+    {
+      "id": "cowbell",
+      "name": "Cowbell",
+      "era": "Alpine",
+      "summary": "A hollow brass clank instead of a ring.",
+      "tags": [],
+      "file": "cowbell.usdz",
+      "source": "cowbell.usda",
+      "parts": [
+        "Bell",
+        "pivot_Hammer"
+      ],
+      "mechanics": {
+        "bellOffsetColumns": 7,
+        "partials": [
+          [
+            560,
+            0.35,
+            1.0
+          ],
+          [
+            845,
+            0.3,
+            0.8
+          ],
+          [
+            1340,
+            0.2,
+            0.4
+          ],
+          [
+            1910,
+            0.15,
+            0.2
+          ]
+        ],
+        "hammerDegrees": 28.0
+      },
+      "sound": {
+        "pitch": 1.0,
+        "ring": 0.4
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.2
+      },
+      "palette": {}
+    },
+    {
+      "id": "chime_bar",
+      "name": "Chime Bar",
+      "era": "Studio",
+      "summary": "A tuned steel bar: one pure, long sine.",
+      "tags": [],
+      "file": "chime_bar.usdz",
+      "source": "chime_bar.usda",
+      "parts": [
+        "Bell",
+        "pivot_Hammer"
+      ],
+      "mechanics": {
+        "bellOffsetColumns": 8,
+        "partials": [
+          [
+            1568,
+            2.8,
+            1.0
+          ],
+          [
+            4320,
+            0.8,
+            0.15
+          ]
+        ],
+        "hammerDegrees": 28.0
+      },
+      "sound": {
+        "pitch": 1.0,
+        "ring": 1.0
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.2
+      },
+      "palette": {}
+    },
+    {
+      "id": "tiny_ting",
+      "name": "Tiny Ting",
+      "era": "Portable",
+      "summary": "A thimble-sized bell. High and short.",
+      "tags": [],
+      "file": "tiny_ting.usdz",
+      "source": "tiny_ting.usda",
+      "parts": [
+        "Bell",
+        "pivot_Hammer"
+      ],
+      "mechanics": {
+        "bellOffsetColumns": 5,
+        "partials": [
+          [
+            4250,
+            0.55,
+            1.0
+          ],
+          [
+            9900,
+            0.2,
+            0.3
+          ]
+        ],
+        "hammerDegrees": 28.0
+      },
+      "sound": {
+        "pitch": 1.0,
+        "ring": 0.7
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.2
+      },
+      "palette": {}
+    },
+    {
+      "id": "brass_bowl",
+      "name": "Singing Bowl",
+      "era": "Zen",
+      "summary": "A small brass singing bowl on felt. Warm, beating hum.",
+      "tags": [],
+      "file": "brass_bowl.usdz",
+      "source": "brass_bowl.usda",
+      "parts": [
+        "Bell",
+        "pivot_Hammer"
+      ],
+      "mechanics": {
+        "bellOffsetColumns": 9,
+        "partials": [
+          [
+            523,
+            4.0,
+            1.0
+          ],
+          [
+            527,
+            4.0,
+            0.8
+          ],
+          [
+            1410,
+            2.2,
+            0.45
+          ],
+          [
+            2690,
+            1.0,
+            0.25
+          ]
+        ],
+        "hammerDegrees": 18.0
+      },
+      "sound": {
+        "pitch": 1.0,
+        "ring": 1.0
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.2
+      },
+      "palette": {}
+    },
+    {
+      "id": "spring_coil",
+      "name": "Coil Gong",
+      "era": "Clockwork",
+      "summary": "A flat coiled spring like in a mantel clock: dispersive 'shimmer'.",
+      "tags": [],
+      "file": "spring_coil.usdz",
+      "source": "spring_coil.usda",
+      "parts": [
+        "Bell",
+        "pivot_Hammer"
+      ],
+      "mechanics": {
+        "bellOffsetColumns": 7,
+        "partials": [
+          [
+            880,
+            2.5,
+            0.8
+          ],
+          [
+            1250,
+            2.0,
+            0.6
+          ],
+          [
+            1990,
+            1.4,
+            0.5
+          ],
+          [
+            3120,
+            0.9,
+            0.4
+          ]
+        ],
+        "hammerDegrees": 28.0,
+        "dispersion": 0.8
+      },
+      "sound": {
+        "pitch": 1.0,
+        "ring": 1.0
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.2
+      },
+      "palette": {}
+    }
+  ]
+}

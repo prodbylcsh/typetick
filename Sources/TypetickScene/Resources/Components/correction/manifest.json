@@ -1,0 +1,317 @@
+{
+  "kind": "correction",
+  "title": "Correction",
+  "summary": "Correction tape spools and lifter used by Delete and Cut.",
+  "variants": [
+    {
+      "id": "chalk_cover",
+      "name": "Chalk Cover-Up",
+      "era": "1970s",
+      "summary": "Classic white chalk tape. Covers the glyph with a slightly cooler white.",
+      "tags": [],
+      "file": "chalk_cover.usdz",
+      "source": "chalk_cover.usda",
+      "parts": [
+        "pivot_CorrSpoolLeft",
+        "pivot_CorrSpoolRight",
+        "pivot_Lifter"
+      ],
+      "mechanics": {
+        "mode": "coverUp",
+        "tintOffset": [
+          -0.01,
+          0.0,
+          0.015
+        ],
+        "coverage": 1.0,
+        "tapeWidth": 0.008,
+        "lifterLift": 0.011,
+        "tapeLength": 4.0
+      },
+      "sound": {
+        "pitch": 1.1,
+        "body": 0.3,
+        "brightness": 0.5,
+        "decay": 0.6,
+        "ring": 0.0
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.04
+      },
+      "palette": {}
+    },
+    {
+      "id": "lift_off",
+      "name": "Lift-Off Tape",
+      "era": "1980s",
+      "summary": "Adhesive tape that pulls carbon ink off the page, leaving a faint ghost.",
+      "tags": [],
+      "file": "lift_off.usdz",
+      "source": "lift_off.usda",
+      "parts": [
+        "pivot_CorrSpoolLeft",
+        "pivot_CorrSpoolRight",
+        "pivot_Lifter"
+      ],
+      "mechanics": {
+        "mode": "liftOff",
+        "tintOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "coverage": 0.88,
+        "tapeWidth": 0.008,
+        "lifterLift": 0.011,
+        "tapeLength": 4.0
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.35,
+        "brightness": 0.45,
+        "decay": 0.5,
+        "ring": 0.0
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.04
+      },
+      "palette": {}
+    },
+    {
+      "id": "ivory_cover",
+      "name": "Ivory Cover-Up",
+      "era": "Archive",
+      "summary": "Warm ivory chalk for cream papers.",
+      "tags": [],
+      "file": "ivory_cover.usdz",
+      "source": "ivory_cover.usda",
+      "parts": [
+        "pivot_CorrSpoolLeft",
+        "pivot_CorrSpoolRight",
+        "pivot_Lifter"
+      ],
+      "mechanics": {
+        "mode": "coverUp",
+        "tintOffset": [
+          0.02,
+          0.0,
+          -0.035
+        ],
+        "coverage": 1.0,
+        "tapeWidth": 0.008,
+        "lifterLift": 0.011,
+        "tapeLength": 4.0
+      },
+      "sound": {
+        "pitch": 0.9,
+        "body": 0.4,
+        "brightness": 0.6,
+        "decay": 0.8,
+        "ring": 0.3
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.04
+      },
+      "palette": {}
+    },
+    {
+      "id": "film_cover",
+      "name": "Film Cover-Up",
+      "era": "1960s",
+      "summary": "Thin coated film. Crisp edges, slightly glossy patch.",
+      "tags": [],
+      "file": "film_cover.usdz",
+      "source": "film_cover.usda",
+      "parts": [
+        "pivot_CorrSpoolLeft",
+        "pivot_CorrSpoolRight",
+        "pivot_Lifter"
+      ],
+      "mechanics": {
+        "mode": "coverUp",
+        "tintOffset": [
+          0.0,
+          0.005,
+          0.0
+        ],
+        "coverage": 0.96,
+        "tapeWidth": 0.008,
+        "lifterLift": 0.011,
+        "tapeLength": 4.0,
+        "gloss": 0.4
+      },
+      "sound": {
+        "pitch": 1.2,
+        "body": 0.3,
+        "brightness": 0.6,
+        "decay": 0.6,
+        "ring": 0.1
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.04
+      },
+      "palette": {}
+    },
+    {
+      "id": "paper_patch",
+      "name": "Paper Patch",
+      "era": "Wartime",
+      "summary": "A sprung lever presses a strip of thin correction paper. Rough, visible patch.",
+      "tags": [],
+      "file": "paper_patch.usdz",
+      "source": "paper_patch.usda",
+      "parts": [
+        "pivot_CorrSpoolLeft",
+        "pivot_CorrSpoolRight",
+        "pivot_Lifter"
+      ],
+      "mechanics": {
+        "mode": "coverUp",
+        "tintOffset": [
+          0.01,
+          0.0,
+          -0.02
+        ],
+        "coverage": 1.0,
+        "tapeWidth": 0.008,
+        "lifterLift": 0.011,
+        "tapeLength": 4.0,
+        "patch": true,
+        "roughness": 0.9
+      },
+      "sound": {
+        "pitch": 0.8,
+        "body": 0.5,
+        "brightness": 0.5,
+        "decay": 0.8,
+        "ring": 0.05
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.04
+      },
+      "palette": {}
+    },
+    {
+      "id": "ink_eraser",
+      "name": "Ink Eraser Wheel",
+      "era": "Experimental",
+      "summary": "A fine abrasive band that scuffs ink away and roughens the paper.",
+      "tags": [],
+      "file": "ink_eraser.usdz",
+      "source": "ink_eraser.usda",
+      "parts": [
+        "pivot_CorrSpoolLeft",
+        "pivot_CorrSpoolRight",
+        "pivot_Lifter"
+      ],
+      "mechanics": {
+        "mode": "liftOff",
+        "tintOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "coverage": 0.8,
+        "tapeWidth": 0.008,
+        "lifterLift": 0.011,
+        "tapeLength": 4.0,
+        "abrasion": 0.6
+      },
+      "sound": {
+        "pitch": 0.7,
+        "body": 0.4,
+        "brightness": 0.9,
+        "decay": 0.6,
+        "ring": 0.0
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.04
+      },
+      "palette": {}
+    },
+    {
+      "id": "tinted_cover",
+      "name": "Color-Matched Tape",
+      "era": "Studio",
+      "summary": "Matches the paper tint closely; only a sheen gives it away.",
+      "tags": [],
+      "file": "tinted_cover.usdz",
+      "source": "tinted_cover.usda",
+      "parts": [
+        "pivot_CorrSpoolLeft",
+        "pivot_CorrSpoolRight",
+        "pivot_Lifter"
+      ],
+      "mechanics": {
+        "mode": "coverUp",
+        "tintOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "coverage": 1.0,
+        "tapeWidth": 0.008,
+        "lifterLift": 0.011,
+        "tapeLength": 4.0,
+        "matchPaper": 0.85
+      },
+      "sound": {
+        "pitch": 1.05,
+        "body": 0.35,
+        "brightness": 0.45,
+        "decay": 0.5,
+        "ring": 0.0
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.04
+      },
+      "palette": {}
+    },
+    {
+      "id": "brass_bellows",
+      "name": "Brass Bellows",
+      "era": "Steampunk",
+      "summary": "A puff of white powder blown through a stencil. Soft, slightly grainy cover.",
+      "tags": [],
+      "file": "brass_bellows.usdz",
+      "source": "brass_bellows.usda",
+      "parts": [
+        "pivot_CorrSpoolLeft",
+        "pivot_CorrSpoolRight",
+        "pivot_Lifter"
+      ],
+      "mechanics": {
+        "mode": "coverUp",
+        "tintOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "coverage": 0.92,
+        "tapeWidth": 0.008,
+        "lifterLift": 0.011,
+        "tapeLength": 4.0,
+        "grain": 0.7
+      },
+      "sound": {
+        "pitch": 0.85,
+        "body": 0.45,
+        "brightness": 0.35,
+        "decay": 0.9,
+        "ring": 0.2
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.04
+      },
+      "palette": {}
+    }
+  ]
+}

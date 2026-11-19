@@ -1,0 +1,303 @@
+{
+  "kind": "paperBail",
+  "title": "Paper Bail",
+  "summary": "Holds the sheet against the platen; includes the paper release lever.",
+  "variants": [
+    {
+      "id": "roller_bail",
+      "name": "Roller Bail",
+      "era": "Classic",
+      "summary": "Chrome rod with three rubber rollers.",
+      "tags": [],
+      "file": "roller_bail.usdz",
+      "source": "roller_bail.usda",
+      "parts": [
+        "pivot_Bail",
+        "pivot_ReleaseLever"
+      ],
+      "mechanics": {
+        "bailLiftDegrees": 35.0,
+        "rollerCount": 3,
+        "pressure": 0.6,
+        "releaseLeverDegrees": 40.0,
+        "hinge": [
+          0.0,
+          -0.004,
+          -0.026
+        ],
+        "nominalWidth": 0.24
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.5,
+        "brightness": 0.7,
+        "decay": 1.0,
+        "ring": 0.3
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.08
+      },
+      "palette": {}
+    },
+    {
+      "id": "wire_bail",
+      "name": "Wire Bail",
+      "era": "1910s",
+      "summary": "A single sprung wire. Snaps back with a twang.",
+      "tags": [],
+      "file": "wire_bail.usdz",
+      "source": "wire_bail.usda",
+      "parts": [
+        "pivot_Bail",
+        "pivot_ReleaseLever"
+      ],
+      "mechanics": {
+        "bailLiftDegrees": 40,
+        "rollerCount": 0,
+        "pressure": 0.4,
+        "releaseLeverDegrees": 40.0,
+        "hinge": [
+          0.0,
+          -0.004,
+          -0.026
+        ],
+        "nominalWidth": 0.24
+      },
+      "sound": {
+        "pitch": 1.4,
+        "body": 0.2,
+        "brightness": 1.0,
+        "decay": 1.4,
+        "ring": 0.9
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.08
+      },
+      "palette": {}
+    },
+    {
+      "id": "scale_plate",
+      "name": "Scale Plate",
+      "era": "1960s",
+      "summary": "Clear celluloid plate with a column scale.",
+      "tags": [],
+      "file": "scale_plate.usdz",
+      "source": "scale_plate.usda",
+      "parts": [
+        "pivot_Bail",
+        "pivot_ReleaseLever"
+      ],
+      "mechanics": {
+        "bailLiftDegrees": 32,
+        "rollerCount": 2,
+        "pressure": 0.5,
+        "releaseLeverDegrees": 40.0,
+        "hinge": [
+          0.0,
+          -0.004,
+          -0.026
+        ],
+        "nominalWidth": 0.24
+      },
+      "sound": {
+        "pitch": 1.1,
+        "body": 0.4,
+        "brightness": 0.5,
+        "decay": 0.7,
+        "ring": 0.1
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.08
+      },
+      "palette": {}
+    },
+    {
+      "id": "double_rod",
+      "name": "Double Rod",
+      "era": "Office",
+      "summary": "Two rods and four small rollers hold heavy card stock flat.",
+      "tags": [],
+      "file": "double_rod.usdz",
+      "source": "double_rod.usda",
+      "parts": [
+        "pivot_Bail",
+        "pivot_ReleaseLever"
+      ],
+      "mechanics": {
+        "bailLiftDegrees": 30,
+        "rollerCount": 4,
+        "pressure": 0.85,
+        "releaseLeverDegrees": 40.0,
+        "hinge": [
+          0.0,
+          -0.004,
+          -0.026
+        ],
+        "nominalWidth": 0.24
+      },
+      "sound": {
+        "pitch": 0.9,
+        "body": 0.6,
+        "brightness": 0.7,
+        "decay": 1.0,
+        "ring": 0.35
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.08
+      },
+      "palette": {}
+    },
+    {
+      "id": "wide_rollers",
+      "name": "Wide Rollers",
+      "era": "1950s",
+      "summary": "Two wide rubber drums. Quiet and grippy.",
+      "tags": [],
+      "file": "wide_rollers.usdz",
+      "source": "wide_rollers.usda",
+      "parts": [
+        "pivot_Bail",
+        "pivot_ReleaseLever"
+      ],
+      "mechanics": {
+        "bailLiftDegrees": 33,
+        "rollerCount": 2,
+        "pressure": 0.7,
+        "releaseLeverDegrees": 40.0,
+        "hinge": [
+          0.0,
+          -0.004,
+          -0.026
+        ],
+        "nominalWidth": 0.24
+      },
+      "sound": {
+        "pitch": 0.85,
+        "body": 0.6,
+        "brightness": 0.4,
+        "decay": 0.7,
+        "ring": 0.1
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.08
+      },
+      "palette": {}
+    },
+    {
+      "id": "finger_hooks",
+      "name": "Paper Fingers",
+      "era": "Minimal",
+      "summary": "Two sprung fingers instead of a bail bar.",
+      "tags": [],
+      "file": "finger_hooks.usdz",
+      "source": "finger_hooks.usda",
+      "parts": [
+        "pivot_Bail",
+        "pivot_ReleaseLever"
+      ],
+      "mechanics": {
+        "bailLiftDegrees": 45,
+        "rollerCount": 2,
+        "pressure": 0.35,
+        "releaseLeverDegrees": 40.0,
+        "hinge": [
+          0.0,
+          -0.004,
+          -0.026
+        ],
+        "nominalWidth": 0.24
+      },
+      "sound": {
+        "pitch": 1.2,
+        "body": 0.3,
+        "brightness": 0.8,
+        "decay": 1.0,
+        "ring": 0.5
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.08
+      },
+      "palette": {}
+    },
+    {
+      "id": "brass_bail",
+      "name": "Brass Bail",
+      "era": "Victorian",
+      "summary": "Brass rod and brass wheels.",
+      "tags": [],
+      "file": "brass_bail.usdz",
+      "source": "brass_bail.usda",
+      "parts": [
+        "pivot_Bail",
+        "pivot_ReleaseLever"
+      ],
+      "mechanics": {
+        "bailLiftDegrees": 35,
+        "rollerCount": 4,
+        "pressure": 0.65,
+        "releaseLeverDegrees": 40.0,
+        "hinge": [
+          0.0,
+          -0.004,
+          -0.026
+        ],
+        "nominalWidth": 0.24
+      },
+      "sound": {
+        "pitch": 0.95,
+        "body": 0.55,
+        "brightness": 0.85,
+        "decay": 1.3,
+        "ring": 0.7
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.08
+      },
+      "palette": {}
+    },
+    {
+      "id": "shield",
+      "name": "Paper Shield",
+      "era": "1980s",
+      "summary": "Plastic shield bar with rollers underneath.",
+      "tags": [],
+      "file": "shield.usdz",
+      "source": "shield.usda",
+      "parts": [
+        "pivot_Bail",
+        "pivot_ReleaseLever"
+      ],
+      "mechanics": {
+        "bailLiftDegrees": 28,
+        "rollerCount": 3,
+        "pressure": 0.6,
+        "releaseLeverDegrees": 40.0,
+        "hinge": [
+          0.0,
+          -0.004,
+          -0.026
+        ],
+        "nominalWidth": 0.24
+      },
+      "sound": {
+        "pitch": 1.15,
+        "body": 0.4,
+        "brightness": 0.45,
+        "decay": 0.5,
+        "ring": 0.0
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.08
+      },
+      "palette": {}
+    }
+  ]
+}

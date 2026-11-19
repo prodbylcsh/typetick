@@ -1,0 +1,348 @@
+{
+  "kind": "keys",
+  "title": "Keys",
+  "summary": "Keycaps, key levers and space bar.",
+  "variants": [
+    {
+      "id": "glass_ring",
+      "name": "Glass Ring",
+      "era": "1920s",
+      "summary": "Chrome rimmed keys with domed glass legends on long levers. Deep travel, bright ting on release.",
+      "tags": [
+        "glass",
+        "ring"
+      ],
+      "file": "glass_ring.usdz",
+      "source": "glass_ring.usda",
+      "parts": [
+        "Key",
+        "SpaceBar"
+      ],
+      "mechanics": {
+        "travel": 0.0105,
+        "tilt": 7.0,
+        "legend": "engraved"
+      },
+      "sound": {
+        "pitch": 1.2,
+        "body": 0.3,
+        "brightness": 0.85,
+        "decay": 0.9,
+        "ring": 0.6
+      },
+      "animation": {
+        "speed": 0.9,
+        "travel": 1.0,
+        "overshoot": 0.18
+      },
+      "palette": {
+        "keyTop": [
+          0.043137254901960784,
+          0.043137254901960784,
+          0.047058823529411764
+        ]
+      }
+    },
+    {
+      "id": "bakelite_round",
+      "name": "Bakelite Round",
+      "era": "1940s",
+      "summary": "Thick dished bakelite buttons. Warm, woody click.",
+      "tags": [
+        "bakelite"
+      ],
+      "file": "bakelite_round.usdz",
+      "source": "bakelite_round.usda",
+      "parts": [
+        "Key",
+        "SpaceBar"
+      ],
+      "mechanics": {
+        "travel": 0.009,
+        "tilt": 5.0,
+        "legend": "printed"
+      },
+      "sound": {
+        "pitch": 0.9,
+        "body": 0.7,
+        "brightness": 0.45,
+        "decay": 0.8,
+        "ring": 0.05
+      },
+      "animation": {
+        "speed": 1.0,
+        "travel": 1.0,
+        "overshoot": 0.08
+      },
+      "palette": {
+        "keyBody": [
+          0.11372549019607843,
+          0.08627450980392157,
+          0.07058823529411765
+        ],
+        "keyTop": [
+          0.11372549019607843,
+          0.08627450980392157,
+          0.07058823529411765
+        ]
+      }
+    },
+    {
+      "id": "chiclet_square",
+      "name": "Chiclet Square",
+      "era": "1970s",
+      "summary": "Low square plastic caps with a short, crisp travel.",
+      "tags": [
+        "plastic",
+        "square"
+      ],
+      "file": "chiclet_square.usdz",
+      "source": "chiclet_square.usda",
+      "parts": [
+        "Key",
+        "SpaceBar"
+      ],
+      "mechanics": {
+        "travel": 0.006,
+        "tilt": 2.0,
+        "legend": "printed"
+      },
+      "sound": {
+        "pitch": 1.4,
+        "body": 0.35,
+        "brightness": 0.6,
+        "decay": 0.6,
+        "ring": 0.0
+      },
+      "animation": {
+        "speed": 1.25,
+        "travel": 1.0,
+        "overshoot": 0.04
+      },
+      "palette": {
+        "keyBody": [
+          0.9058823529411765,
+          0.8823529411764706,
+          0.8274509803921568
+        ],
+        "keyTop": [
+          0.9372549019607843,
+          0.9137254901960784,
+          0.8627450980392157
+        ]
+      }
+    },
+    {
+      "id": "tombstone_scoop",
+      "name": "Tombstone Scoop",
+      "era": "1960s",
+      "summary": "Tall tombstone keys with a cylindrical scoop. Long, damped stroke.",
+      "tags": [
+        "sculpted"
+      ],
+      "file": "tombstone_scoop.usdz",
+      "source": "tombstone_scoop.usda",
+      "parts": [
+        "Key",
+        "SpaceBar"
+      ],
+      "mechanics": {
+        "travel": 0.0085,
+        "tilt": 4.0,
+        "legend": "printed"
+      },
+      "sound": {
+        "pitch": 0.85,
+        "body": 0.8,
+        "brightness": 0.4,
+        "decay": 0.7,
+        "ring": 0.0
+      },
+      "animation": {
+        "speed": 0.95,
+        "travel": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {
+        "keyBody": [
+          0.23137254901960785,
+          0.22745098039215686,
+          0.21568627450980393
+        ],
+        "keyTop": [
+          0.23137254901960785,
+          0.22745098039215686,
+          0.21568627450980393
+        ]
+      }
+    },
+    {
+      "id": "hex_brass",
+      "name": "Hex Brass",
+      "era": "Steampunk",
+      "summary": "Hexagonal brass bezels around enamel legends. Metallic chink on every press.",
+      "tags": [
+        "brass",
+        "hex"
+      ],
+      "file": "hex_brass.usdz",
+      "source": "hex_brass.usda",
+      "parts": [
+        "Key",
+        "SpaceBar"
+      ],
+      "mechanics": {
+        "travel": 0.0095,
+        "tilt": 6.0,
+        "legend": "enamel"
+      },
+      "sound": {
+        "pitch": 1.1,
+        "body": 0.4,
+        "brightness": 0.9,
+        "decay": 1.1,
+        "ring": 0.75
+      },
+      "animation": {
+        "speed": 0.9,
+        "travel": 1.0,
+        "overshoot": 0.15
+      },
+      "palette": {
+        "keyTop": [
+          0.9372549019607843,
+          0.9058823529411765,
+          0.8235294117647058
+        ]
+      }
+    },
+    {
+      "id": "disc_flat",
+      "name": "Steel Disc",
+      "era": "1910s",
+      "summary": "Thin steel discs on exposed chrome stems with collars. Clattery, very long throw.",
+      "tags": [
+        "steel",
+        "exposed"
+      ],
+      "file": "disc_flat.usdz",
+      "source": "disc_flat.usda",
+      "parts": [
+        "Key",
+        "SpaceBar"
+      ],
+      "mechanics": {
+        "travel": 0.012,
+        "tilt": 9.0,
+        "legend": "stamped"
+      },
+      "sound": {
+        "pitch": 1.3,
+        "body": 0.2,
+        "brightness": 1.0,
+        "decay": 1.2,
+        "ring": 0.8
+      },
+      "animation": {
+        "speed": 0.85,
+        "travel": 1.0,
+        "overshoot": 0.22
+      },
+      "palette": {
+        "keyTop": [
+          0.06274509803921569,
+          0.06274509803921569,
+          0.06274509803921569
+        ]
+      }
+    },
+    {
+      "id": "sculpted_dish",
+      "name": "Sculpted Dish",
+      "era": "1980s",
+      "summary": "Tapered caps with a spherical dish. Soft landing, muted thock.",
+      "tags": [
+        "dish"
+      ],
+      "file": "sculpted_dish.usdz",
+      "source": "sculpted_dish.usda",
+      "parts": [
+        "Key",
+        "SpaceBar"
+      ],
+      "mechanics": {
+        "travel": 0.007,
+        "tilt": 3.0,
+        "legend": "doubleshot"
+      },
+      "sound": {
+        "pitch": 0.75,
+        "body": 0.85,
+        "brightness": 0.3,
+        "decay": 0.6,
+        "ring": 0.0
+      },
+      "animation": {
+        "speed": 1.1,
+        "travel": 1.0,
+        "overshoot": 0.03
+      },
+      "palette": {
+        "keyBody": [
+          0.14901960784313725,
+          0.15294117647058825,
+          0.16470588235294117
+        ],
+        "keyTop": [
+          0.14901960784313725,
+          0.15294117647058825,
+          0.16470588235294117
+        ]
+      }
+    },
+    {
+      "id": "pill_soft",
+      "name": "Pill Soft",
+      "era": "1990s",
+      "summary": "Wide elliptical pills in soft-touch plastic. Quiet and springy.",
+      "tags": [
+        "soft touch"
+      ],
+      "file": "pill_soft.usdz",
+      "source": "pill_soft.usda",
+      "parts": [
+        "Key",
+        "SpaceBar"
+      ],
+      "mechanics": {
+        "travel": 0.0065,
+        "tilt": 2.5,
+        "legend": "printed"
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.5,
+        "brightness": 0.35,
+        "decay": 0.5,
+        "ring": 0.0
+      },
+      "animation": {
+        "speed": 1.2,
+        "travel": 1.0,
+        "overshoot": 0.1
+      },
+      "palette": {
+        "keyBody": [
+          0.8509803921568627,
+          0.8117647058823529,
+          0.7529411764705882
+        ],
+        "keyTop": [
+          0.9019607843137255,
+          0.8666666666666667,
+          0.8117647058823529
+        ]
+      }
+    }
+  ]
+}

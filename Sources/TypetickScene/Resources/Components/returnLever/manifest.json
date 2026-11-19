@@ -1,0 +1,272 @@
+{
+  "kind": "returnLever",
+  "title": "Return Lever",
+  "summary": "Line space and carriage return lever.",
+  "variants": [
+    {
+      "id": "chrome_arm",
+      "name": "Chrome Arm",
+      "era": "1930s",
+      "summary": "Curved chrome arm with a flat thumb paddle.",
+      "tags": [],
+      "file": "chrome_arm.usdz",
+      "source": "chrome_arm.usda",
+      "parts": [
+        "pivot_ReturnLever",
+        "LineSpaceSelector"
+      ],
+      "mechanics": {
+        "swingDegrees": 32,
+        "lineSpacingOptions": [
+          1.0,
+          1.5,
+          2.0
+        ],
+        "feedBeforeReturn": true
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.5,
+        "brightness": 0.7,
+        "decay": 1.0,
+        "ring": 0.4
+      },
+      "animation": {
+        "speed": 1.0
+      },
+      "palette": {}
+    },
+    {
+      "id": "paddle",
+      "name": "Bakelite Paddle",
+      "era": "1940s",
+      "summary": "Short arm with a big bakelite paddle. Short throw.",
+      "tags": [],
+      "file": "paddle.usdz",
+      "source": "paddle.usda",
+      "parts": [
+        "pivot_ReturnLever",
+        "LineSpaceSelector"
+      ],
+      "mechanics": {
+        "swingDegrees": 22,
+        "lineSpacingOptions": [
+          1.0,
+          1.5,
+          2.0
+        ],
+        "feedBeforeReturn": true
+      },
+      "sound": {
+        "pitch": 0.9,
+        "body": 0.7,
+        "brightness": 0.4,
+        "decay": 0.8,
+        "ring": 0.1
+      },
+      "animation": {
+        "speed": 1.1
+      },
+      "palette": {}
+    },
+    {
+      "id": "ball_tip",
+      "name": "Ball Tip",
+      "era": "1920s",
+      "summary": "Thin rod with a bakelite ball. Long sweeping throw.",
+      "tags": [],
+      "file": "ball_tip.usdz",
+      "source": "ball_tip.usda",
+      "parts": [
+        "pivot_ReturnLever",
+        "LineSpaceSelector"
+      ],
+      "mechanics": {
+        "swingDegrees": 40,
+        "lineSpacingOptions": [
+          1.0,
+          1.5,
+          2.0
+        ],
+        "feedBeforeReturn": true
+      },
+      "sound": {
+        "pitch": 1.05,
+        "body": 0.45,
+        "brightness": 0.7,
+        "decay": 1.1,
+        "ring": 0.5
+      },
+      "animation": {
+        "speed": 0.9
+      },
+      "palette": {}
+    },
+    {
+      "id": "deco_fin",
+      "name": "Deco Fin",
+      "era": "1930s",
+      "summary": "Finned chrome arm with an enamel tip.",
+      "tags": [],
+      "file": "deco_fin.usdz",
+      "source": "deco_fin.usda",
+      "parts": [
+        "pivot_ReturnLever",
+        "LineSpaceSelector"
+      ],
+      "mechanics": {
+        "swingDegrees": 30,
+        "lineSpacingOptions": [
+          1.0,
+          1.5,
+          2.0
+        ],
+        "feedBeforeReturn": true
+      },
+      "sound": {
+        "pitch": 1.1,
+        "body": 0.5,
+        "brightness": 0.8,
+        "decay": 1.0,
+        "ring": 0.45
+      },
+      "animation": {
+        "speed": 1.0
+      },
+      "palette": {}
+    },
+    {
+      "id": "hook",
+      "name": "Shepherd Hook",
+      "era": "Workshop",
+      "summary": "Blackened hook you pull rather than push.",
+      "tags": [],
+      "file": "hook.usdz",
+      "source": "hook.usda",
+      "parts": [
+        "pivot_ReturnLever",
+        "LineSpaceSelector"
+      ],
+      "mechanics": {
+        "swingDegrees": 36,
+        "lineSpacingOptions": [
+          1.0,
+          2.0,
+          3.0
+        ],
+        "feedBeforeReturn": true
+      },
+      "sound": {
+        "pitch": 0.85,
+        "body": 0.6,
+        "brightness": 0.6,
+        "decay": 1.0,
+        "ring": 0.3
+      },
+      "animation": {
+        "speed": 0.95
+      },
+      "palette": {}
+    },
+    {
+      "id": "long_swan",
+      "name": "Long Swan",
+      "era": "Streamline",
+      "summary": "Very long S-curve with a rubber grip. Lightest feel.",
+      "tags": [],
+      "file": "long_swan.usdz",
+      "source": "long_swan.usda",
+      "parts": [
+        "pivot_ReturnLever",
+        "LineSpaceSelector"
+      ],
+      "mechanics": {
+        "swingDegrees": 28,
+        "lineSpacingOptions": [
+          1.0,
+          1.5,
+          2.0
+        ],
+        "feedBeforeReturn": true
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.4,
+        "brightness": 0.6,
+        "decay": 0.9,
+        "ring": 0.35
+      },
+      "animation": {
+        "speed": 1.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "short_stub",
+      "name": "Power Switch",
+      "era": "1980s",
+      "summary": "A stubby rocker for electric carriages. Clicks a switch, the motor does the rest.",
+      "tags": [],
+      "file": "short_stub.usdz",
+      "source": "short_stub.usda",
+      "parts": [
+        "pivot_ReturnLever",
+        "LineSpaceSelector"
+      ],
+      "mechanics": {
+        "swingDegrees": 8,
+        "lineSpacingOptions": [
+          1.0,
+          1.5,
+          2.0
+        ],
+        "feedBeforeReturn": false,
+        "isSwitch": true
+      },
+      "sound": {
+        "pitch": 1.4,
+        "body": 0.3,
+        "brightness": 0.5,
+        "decay": 0.4,
+        "ring": 0.0
+      },
+      "animation": {
+        "speed": 1.4
+      },
+      "palette": {}
+    },
+    {
+      "id": "loop",
+      "name": "Ring Pull",
+      "era": "1950s",
+      "summary": "Chrome ring handle with a 1, 1\u00bd and 2 line selector.",
+      "tags": [],
+      "file": "loop.usdz",
+      "source": "loop.usda",
+      "parts": [
+        "pivot_ReturnLever",
+        "LineSpaceSelector"
+      ],
+      "mechanics": {
+        "swingDegrees": 30,
+        "lineSpacingOptions": [
+          1.0,
+          1.5,
+          2.0
+        ],
+        "feedBeforeReturn": true
+      },
+      "sound": {
+        "pitch": 1.05,
+        "body": 0.5,
+        "brightness": 0.75,
+        "decay": 1.0,
+        "ring": 0.5
+      },
+      "animation": {
+        "speed": 1.0
+      },
+      "palette": {}
+    }
+  ]
+}

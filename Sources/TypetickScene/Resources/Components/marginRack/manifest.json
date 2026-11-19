@@ -1,0 +1,320 @@
+{
+  "kind": "marginRack",
+  "title": "Margin Rack",
+  "summary": "Margin stops and tab stops.",
+  "variants": [
+    {
+      "id": "sliding_tabs",
+      "name": "Sliding Tabs",
+      "era": "Classic",
+      "summary": "Chrome slides you pinch and move.",
+      "tags": [],
+      "file": "sliding_tabs.usdz",
+      "source": "sliding_tabs.usda",
+      "parts": [
+        "Rack",
+        "MarginStop",
+        "TabStop"
+      ],
+      "mechanics": {
+        "setStyle": "pinch",
+        "nominalWidth": 0.24,
+        "defaultLeftMargin": 10,
+        "defaultRightMargin": 75,
+        "defaultTabs": [
+          15,
+          25,
+          35,
+          45,
+          55,
+          65
+        ]
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.4,
+        "brightness": 0.7,
+        "decay": 0.7,
+        "ring": 0.2
+      },
+      "animation": {
+        "speed": 1.0
+      },
+      "palette": {}
+    },
+    {
+      "id": "pointer_arrows",
+      "name": "Pointer Arrows",
+      "era": "1950s",
+      "summary": "Red pointers over a printed scale.",
+      "tags": [],
+      "file": "pointer_arrows.usdz",
+      "source": "pointer_arrows.usda",
+      "parts": [
+        "Rack",
+        "MarginStop",
+        "TabStop"
+      ],
+      "mechanics": {
+        "setStyle": "pinch",
+        "nominalWidth": 0.24,
+        "defaultLeftMargin": 10,
+        "defaultRightMargin": 75,
+        "defaultTabs": [
+          15,
+          25,
+          35,
+          45,
+          55,
+          65
+        ]
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.4,
+        "brightness": 0.7,
+        "decay": 0.7,
+        "ring": 0.2
+      },
+      "animation": {
+        "speed": 1.0
+      },
+      "palette": {}
+    },
+    {
+      "id": "ball_stops",
+      "name": "Ball Stops",
+      "era": "1930s",
+      "summary": "Bakelite balls on a chrome rod.",
+      "tags": [],
+      "file": "ball_stops.usdz",
+      "source": "ball_stops.usda",
+      "parts": [
+        "Rack",
+        "MarginStop",
+        "TabStop"
+      ],
+      "mechanics": {
+        "setStyle": "slide",
+        "nominalWidth": 0.24,
+        "defaultLeftMargin": 10,
+        "defaultRightMargin": 75,
+        "defaultTabs": [
+          15,
+          25,
+          35,
+          45,
+          55,
+          65
+        ]
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.4,
+        "brightness": 0.7,
+        "decay": 0.7,
+        "ring": 0.2
+      },
+      "animation": {
+        "speed": 1.0
+      },
+      "palette": {}
+    },
+    {
+      "id": "hook_clips",
+      "name": "Hook Clips",
+      "era": "Workshop",
+      "summary": "Spring hooks clipped onto a toothed bar.",
+      "tags": [],
+      "file": "hook_clips.usdz",
+      "source": "hook_clips.usda",
+      "parts": [
+        "Rack",
+        "MarginStop",
+        "TabStop"
+      ],
+      "mechanics": {
+        "setStyle": "clip",
+        "nominalWidth": 0.24,
+        "defaultLeftMargin": 10,
+        "defaultRightMargin": 75,
+        "defaultTabs": [
+          15,
+          25,
+          35,
+          45,
+          55,
+          65
+        ]
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.4,
+        "brightness": 0.7,
+        "decay": 0.7,
+        "ring": 0.2
+      },
+      "animation": {
+        "speed": 1.0
+      },
+      "palette": {}
+    },
+    {
+      "id": "brass_riders",
+      "name": "Brass Riders",
+      "era": "Victorian",
+      "summary": "Brass riders on a walnut rail.",
+      "tags": [],
+      "file": "brass_riders.usdz",
+      "source": "brass_riders.usda",
+      "parts": [
+        "Rack",
+        "MarginStop",
+        "TabStop"
+      ],
+      "mechanics": {
+        "setStyle": "slide",
+        "nominalWidth": 0.24,
+        "defaultLeftMargin": 10,
+        "defaultRightMargin": 75,
+        "defaultTabs": [
+          15,
+          25,
+          35,
+          45,
+          55,
+          65
+        ]
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.4,
+        "brightness": 0.7,
+        "decay": 0.7,
+        "ring": 0.2
+      },
+      "animation": {
+        "speed": 1.0
+      },
+      "palette": {}
+    },
+    {
+      "id": "flag_stops",
+      "name": "Flag Stops",
+      "era": "Railway",
+      "summary": "Little red flags. Tabs are tiny red pins.",
+      "tags": [],
+      "file": "flag_stops.usdz",
+      "source": "flag_stops.usda",
+      "parts": [
+        "Rack",
+        "MarginStop",
+        "TabStop"
+      ],
+      "mechanics": {
+        "setStyle": "clip",
+        "nominalWidth": 0.24,
+        "defaultLeftMargin": 10,
+        "defaultRightMargin": 75,
+        "defaultTabs": [
+          15,
+          25,
+          35,
+          45,
+          55,
+          65
+        ]
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.4,
+        "brightness": 0.7,
+        "decay": 0.7,
+        "ring": 0.2
+      },
+      "animation": {
+        "speed": 1.0
+      },
+      "palette": {}
+    },
+    {
+      "id": "push_buttons",
+      "name": "Push Buttons",
+      "era": "1970s",
+      "summary": "Margin set buttons: move the carriage, press, done.",
+      "tags": [],
+      "file": "push_buttons.usdz",
+      "source": "push_buttons.usda",
+      "parts": [
+        "Rack",
+        "MarginStop",
+        "TabStop"
+      ],
+      "mechanics": {
+        "setStyle": "button",
+        "nominalWidth": 0.24,
+        "defaultLeftMargin": 10,
+        "defaultRightMargin": 75,
+        "defaultTabs": [
+          15,
+          25,
+          35,
+          45,
+          55,
+          65
+        ],
+        "tabSetClicks": 2
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.4,
+        "brightness": 0.7,
+        "decay": 0.7,
+        "ring": 0.2
+      },
+      "animation": {
+        "speed": 1.0
+      },
+      "palette": {}
+    },
+    {
+      "id": "magnetic",
+      "name": "Magnetic Pucks",
+      "era": "Modern",
+      "summary": "Copper magnetic pucks snap onto a steel rail.",
+      "tags": [],
+      "file": "magnetic.usdz",
+      "source": "magnetic.usda",
+      "parts": [
+        "Rack",
+        "MarginStop",
+        "TabStop"
+      ],
+      "mechanics": {
+        "setStyle": "snap",
+        "nominalWidth": 0.24,
+        "defaultLeftMargin": 10,
+        "defaultRightMargin": 75,
+        "defaultTabs": [
+          15,
+          25,
+          35,
+          45,
+          55,
+          65
+        ]
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.4,
+        "brightness": 0.7,
+        "decay": 0.7,
+        "ring": 0.2
+      },
+      "animation": {
+        "speed": 1.0
+      },
+      "palette": {}
+    }
+  ]
+}

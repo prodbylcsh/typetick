@@ -1,0 +1,282 @@
+{
+  "kind": "ribbon",
+  "title": "Ribbon",
+  "summary": "Ink ribbon spools and the vibrator that lifts the ribbon for every strike.",
+  "variants": [
+    {
+      "id": "open_metal",
+      "name": "Open Metal Spools",
+      "era": "Classic",
+      "summary": "Pressed steel spools with lightening holes and a sprung fork vibrator.",
+      "tags": [],
+      "file": "open_metal.usdz",
+      "source": "open_metal.usda",
+      "parts": [
+        "pivot_SpoolLeft",
+        "pivot_SpoolRight",
+        "pivot_Vibrator"
+      ],
+      "mechanics": {
+        "ribbonWidth": 0.013,
+        "vibratorLift": 0.0065,
+        "autoReverse": "eyelet",
+        "advancePerStrike": 0.0006,
+        "ribbonLength": 10.0,
+        "spoolHeight": 0.014
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.4,
+        "brightness": 0.7,
+        "decay": 0.8,
+        "ring": 0.3
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "covered_cups",
+      "name": "Covered Cups",
+      "era": "1950s",
+      "summary": "Chrome cups hide the spools; only the ribbon shows.",
+      "tags": [],
+      "file": "covered_cups.usdz",
+      "source": "covered_cups.usda",
+      "parts": [
+        "pivot_SpoolLeft",
+        "pivot_SpoolRight",
+        "pivot_Vibrator"
+      ],
+      "mechanics": {
+        "ribbonWidth": 0.013,
+        "vibratorLift": 0.0065,
+        "autoReverse": "eyelet",
+        "advancePerStrike": 0.0006,
+        "ribbonLength": 10.0,
+        "spoolHeight": 0.014
+      },
+      "sound": {
+        "pitch": 0.95,
+        "body": 0.5,
+        "brightness": 0.6,
+        "decay": 0.7,
+        "ring": 0.2
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "cassette",
+      "name": "Cartridge",
+      "era": "1970s",
+      "summary": "Snap-in cartridges with smoked windows. Clean fingers, quiet ratchet.",
+      "tags": [],
+      "file": "cassette.usdz",
+      "source": "cassette.usda",
+      "parts": [
+        "pivot_SpoolLeft",
+        "pivot_SpoolRight",
+        "SpoolLeft_Housing",
+        "SpoolRight_Housing",
+        "pivot_Vibrator"
+      ],
+      "mechanics": {
+        "ribbonWidth": 0.013,
+        "vibratorLift": 0.0055,
+        "autoReverse": "none",
+        "advancePerStrike": 0.0006,
+        "ribbonLength": 6.0,
+        "spoolHeight": 0.014
+      },
+      "sound": {
+        "pitch": 1.2,
+        "body": 0.3,
+        "brightness": 0.4,
+        "decay": 0.5,
+        "ring": 0.0
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "brass_reels",
+      "name": "Brass Reels",
+      "era": "Victorian",
+      "summary": "Five-hole brass reels and a brass fork.",
+      "tags": [],
+      "file": "brass_reels.usdz",
+      "source": "brass_reels.usda",
+      "parts": [
+        "pivot_SpoolLeft",
+        "pivot_SpoolRight",
+        "pivot_Vibrator"
+      ],
+      "mechanics": {
+        "ribbonWidth": 0.013,
+        "vibratorLift": 0.0065,
+        "autoReverse": "eyelet",
+        "advancePerStrike": 0.0006,
+        "ribbonLength": 10.0,
+        "spoolHeight": 0.014
+      },
+      "sound": {
+        "pitch": 0.9,
+        "body": 0.5,
+        "brightness": 0.85,
+        "decay": 1.2,
+        "ring": 0.7
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "vented",
+      "name": "Vented Spools",
+      "era": "Industrial",
+      "summary": "Slotted black spools with hook vibrator.",
+      "tags": [],
+      "file": "vented.usdz",
+      "source": "vented.usda",
+      "parts": [
+        "pivot_SpoolLeft",
+        "pivot_SpoolRight",
+        "pivot_Vibrator"
+      ],
+      "mechanics": {
+        "ribbonWidth": 0.013,
+        "vibratorLift": 0.0075,
+        "autoReverse": "eyelet",
+        "advancePerStrike": 0.0006,
+        "ribbonLength": 10.0,
+        "spoolHeight": 0.014
+      },
+      "sound": {
+        "pitch": 0.85,
+        "body": 0.6,
+        "brightness": 0.6,
+        "decay": 0.9,
+        "ring": 0.3
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "wooden",
+      "name": "Wooden Hubs",
+      "era": "Craft",
+      "summary": "Turned wooden hubs between brass flanges.",
+      "tags": [],
+      "file": "wooden.usdz",
+      "source": "wooden.usda",
+      "parts": [
+        "pivot_SpoolLeft",
+        "pivot_SpoolRight",
+        "pivot_Vibrator"
+      ],
+      "mechanics": {
+        "ribbonWidth": 0.013,
+        "vibratorLift": 0.0065,
+        "autoReverse": "eyelet",
+        "advancePerStrike": 0.0006,
+        "ribbonLength": 10.0,
+        "spoolHeight": 0.014
+      },
+      "sound": {
+        "pitch": 0.8,
+        "body": 0.7,
+        "brightness": 0.4,
+        "decay": 0.7,
+        "ring": 0.1
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "translucent",
+      "name": "Clear Spools",
+      "era": "1960s",
+      "summary": "Clear flanges so you can watch the ribbon wind.",
+      "tags": [],
+      "file": "translucent.usdz",
+      "source": "translucent.usda",
+      "parts": [
+        "pivot_SpoolLeft",
+        "pivot_SpoolRight",
+        "pivot_Vibrator"
+      ],
+      "mechanics": {
+        "ribbonWidth": 0.013,
+        "vibratorLift": 0.006,
+        "autoReverse": "eyelet",
+        "advancePerStrike": 0.0006,
+        "ribbonLength": 10.0,
+        "spoolHeight": 0.014
+      },
+      "sound": {
+        "pitch": 1.1,
+        "body": 0.35,
+        "brightness": 0.55,
+        "decay": 0.6,
+        "ring": 0.05
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "double_stack",
+      "name": "Two-Color Stack",
+      "era": "Office",
+      "summary": "Tall spools for a wide two-color ribbon. Shift the color with the selector.",
+      "tags": [],
+      "file": "double_stack.usdz",
+      "source": "double_stack.usda",
+      "parts": [
+        "pivot_SpoolLeft",
+        "pivot_SpoolRight",
+        "pivot_Vibrator"
+      ],
+      "mechanics": {
+        "ribbonWidth": 0.016,
+        "vibratorLift": 0.0075,
+        "autoReverse": "eyelet",
+        "advancePerStrike": 0.0006,
+        "ribbonLength": 10.0,
+        "spoolHeight": 0.022,
+        "twoColor": true
+      },
+      "sound": {
+        "pitch": 0.95,
+        "body": 0.5,
+        "brightness": 0.65,
+        "decay": 0.9,
+        "ring": 0.3
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    }
+  ]
+}

@@ -1,0 +1,335 @@
+{
+  "kind": "recorder",
+  "title": "Recorder",
+  "summary": "The mechanical clipboard bolted to the side of the machine.",
+  "variants": [
+    {
+      "id": "telegraph_perforator",
+      "name": "Telegraph Perforator",
+      "era": "1890s",
+      "summary": "Brass reels of paper tape and an eight-pin punch on a walnut base. Every keystroke is punched; Copy rewinds to the selection, Paste reads it back through sensing needles.",
+      "tags": [],
+      "file": "telegraph_perforator.usdz",
+      "source": "telegraph_perforator.usda",
+      "parts": [
+        "Housing",
+        "pivot_ReelSupply",
+        "pivot_ReelTakeup",
+        "Medium",
+        "pivot_Punch",
+        "pivot_Reader",
+        "pivot_SpringBarrel",
+        "Gauge",
+        "pivot_GaugeNeedle",
+        "pivot_Gear1",
+        "pivot_Gear2",
+        "Linkage"
+      ],
+      "mechanics": {
+        "medium": "tape",
+        "framesAlong": "u",
+        "framesVisible": 40,
+        "charactersPerSecond": 11.0,
+        "springCapacity": 220
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.5,
+        "brightness": 0.8,
+        "decay": 0.8,
+        "ring": 0.4
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "gear_drum",
+      "name": "Pinned Drum Memory",
+      "era": "1910s",
+      "summary": "A drum of movable pins set by cam followers. Pins rise for each key; the drum turns back to read them.",
+      "tags": [],
+      "file": "gear_drum.usdz",
+      "source": "gear_drum.usda",
+      "parts": [
+        "Housing",
+        "pivot_Drum",
+        "pivot_Punch",
+        "pivot_Reader",
+        "pivot_SpringBarrel",
+        "Gauge",
+        "pivot_GaugeNeedle",
+        "pivot_Gear1",
+        "pivot_Gear2",
+        "Linkage"
+      ],
+      "mechanics": {
+        "medium": "drum",
+        "framesAlong": "v",
+        "framesVisible": 64,
+        "charactersPerSecond": 9.0,
+        "springCapacity": 260
+      },
+      "sound": {
+        "pitch": 0.85,
+        "body": 0.7,
+        "brightness": 0.6,
+        "decay": 1.0,
+        "ring": 0.5
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "brass_chronograph",
+      "name": "Chronograph Loop",
+      "era": "1920s",
+      "summary": "An endless tape loop under a domed crystal, like the inside of a giant pocket watch.",
+      "tags": [],
+      "file": "brass_chronograph.usdz",
+      "source": "brass_chronograph.usda",
+      "parts": [
+        "Housing",
+        "pivot_Loop",
+        "pivot_Punch",
+        "pivot_Reader",
+        "pivot_SpringBarrel",
+        "Gauge",
+        "pivot_GaugeNeedle",
+        "pivot_Gear1",
+        "pivot_Gear2",
+        "Linkage"
+      ],
+      "mechanics": {
+        "medium": "loop",
+        "framesAlong": "u",
+        "framesVisible": 96,
+        "charactersPerSecond": 12.0,
+        "springCapacity": 180
+      },
+      "sound": {
+        "pitch": 1.3,
+        "body": 0.3,
+        "brightness": 0.9,
+        "decay": 1.1,
+        "ring": 0.8
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "teletype_reader",
+      "name": "Teletype Reader",
+      "era": "1950s",
+      "summary": "Grey cabinet with a star-wheel reader and chadless tape under a smoked window. Fast and businesslike.",
+      "tags": [],
+      "file": "teletype_reader.usdz",
+      "source": "teletype_reader.usda",
+      "parts": [
+        "Housing",
+        "pivot_ReelSupply",
+        "pivot_ReelTakeup",
+        "Medium",
+        "pivot_Punch",
+        "pivot_Reader",
+        "pivot_SpringBarrel",
+        "Gauge",
+        "pivot_GaugeNeedle",
+        "pivot_Gear1",
+        "pivot_Gear2",
+        "Linkage"
+      ],
+      "mechanics": {
+        "medium": "tape",
+        "framesAlong": "u",
+        "framesVisible": 36,
+        "charactersPerSecond": 16.0,
+        "springCapacity": 400
+      },
+      "sound": {
+        "pitch": 1.1,
+        "body": 0.6,
+        "brightness": 0.6,
+        "decay": 0.6,
+        "ring": 0.1
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "cam_bank",
+      "name": "Cam Bank",
+      "era": "1930s",
+      "summary": "A row of notched cams on a shaft stores the code; followers drop into notches to read.",
+      "tags": [],
+      "file": "cam_bank.usdz",
+      "source": "cam_bank.usda",
+      "parts": [
+        "Housing",
+        "pivot_Drum",
+        "pivot_Punch",
+        "pivot_Reader",
+        "pivot_SpringBarrel",
+        "Gauge",
+        "pivot_GaugeNeedle",
+        "pivot_Gear1",
+        "pivot_Gear2",
+        "Linkage"
+      ],
+      "mechanics": {
+        "medium": "drum",
+        "framesAlong": "v",
+        "framesVisible": 48,
+        "charactersPerSecond": 10.0,
+        "springCapacity": 240
+      },
+      "sound": {
+        "pitch": 0.9,
+        "body": 0.7,
+        "brightness": 0.55,
+        "decay": 0.8,
+        "ring": 0.3
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "jacquard_cards",
+      "name": "Jacquard Cards",
+      "era": "1800s",
+      "summary": "A chain of punched wooden cards over a square cylinder, borrowed from a loom.",
+      "tags": [],
+      "file": "jacquard_cards.usdz",
+      "source": "jacquard_cards.usda",
+      "parts": [
+        "Housing",
+        "pivot_Drum",
+        "pivot_Punch",
+        "pivot_Reader",
+        "pivot_SpringBarrel",
+        "Gauge",
+        "pivot_GaugeNeedle",
+        "pivot_Gear1",
+        "pivot_Gear2",
+        "Linkage"
+      ],
+      "mechanics": {
+        "medium": "cards",
+        "framesAlong": "v",
+        "framesVisible": 24,
+        "charactersPerSecond": 6.0,
+        "springCapacity": 160
+      },
+      "sound": {
+        "pitch": 0.75,
+        "body": 0.85,
+        "brightness": 0.45,
+        "decay": 0.9,
+        "ring": 0.1
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "music_box",
+      "name": "Music Box",
+      "era": "Clockwork",
+      "summary": "A pinned cylinder plucks a steel comb while it replays. Paste sounds like a melody of your text.",
+      "tags": [],
+      "file": "music_box.usdz",
+      "source": "music_box.usda",
+      "parts": [
+        "Housing",
+        "pivot_Drum",
+        "pivot_Punch",
+        "pivot_Reader",
+        "pivot_SpringBarrel",
+        "Gauge",
+        "pivot_GaugeNeedle",
+        "pivot_Gear1",
+        "pivot_Gear2",
+        "Linkage"
+      ],
+      "mechanics": {
+        "medium": "drum",
+        "framesAlong": "v",
+        "framesVisible": 64,
+        "charactersPerSecond": 8.0,
+        "springCapacity": 200,
+        "plucksComb": true
+      },
+      "sound": {
+        "pitch": 1.2,
+        "body": 0.4,
+        "brightness": 0.9,
+        "decay": 1.6,
+        "ring": 1.0
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "glass_tube",
+      "name": "Pneumatic Tube",
+      "era": "Retro-future",
+      "summary": "Tape running through a glass tube between chrome reels; a puff of air advances each frame.",
+      "tags": [],
+      "file": "glass_tube.usdz",
+      "source": "glass_tube.usda",
+      "parts": [
+        "Housing",
+        "pivot_ReelSupply",
+        "pivot_ReelTakeup",
+        "Medium",
+        "pivot_Punch",
+        "pivot_Reader",
+        "pivot_SpringBarrel",
+        "Gauge",
+        "pivot_GaugeNeedle",
+        "pivot_Gear1",
+        "pivot_Gear2",
+        "Linkage"
+      ],
+      "mechanics": {
+        "medium": "tape",
+        "framesAlong": "u",
+        "framesVisible": 60,
+        "charactersPerSecond": 14.0,
+        "springCapacity": 300,
+        "pneumatic": true
+      },
+      "sound": {
+        "pitch": 1.05,
+        "body": 0.35,
+        "brightness": 0.5,
+        "decay": 0.7,
+        "ring": 0.2
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    }
+  ]
+}

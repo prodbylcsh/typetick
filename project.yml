@@ -1,0 +1,31 @@
+# XcodeGen spec (brew install xcodegen && xcodegen) for working in Xcode with
+# a real app target. The Swift package stays the source of truth.
+name: Typetick
+options:
+  bundleIdPrefix: app.typetick
+  deploymentTarget:
+    macOS: "15.0"
+packages:
+  Typetick:
+    path: .
+targets:
+  TypetickApp:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/Typetick
+    dependencies:
+      - package: Typetick
+        product: TypetickCore
+      - package: Typetick
+        product: TypetickAudio
+      - package: Typetick
+        product: TypetickScene
+    settings:
+      base:
+        PRODUCT_NAME: Typetick
+        PRODUCT_BUNDLE_IDENTIFIER: app.typetick.Typetick
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.productivity
+        SWIFT_VERSION: "5.0"
+        ENABLE_HARDENED_RUNTIME: YES

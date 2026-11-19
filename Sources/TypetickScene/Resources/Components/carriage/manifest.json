@@ -1,0 +1,589 @@
+{
+  "kind": "carriage",
+  "title": "Carriage",
+  "summary": "Platen, frame and paper table. Sets pitch, width and return mechanics.",
+  "variants": [
+    {
+      "id": "classic_black",
+      "name": "Classic Black",
+      "era": "1930s",
+      "summary": "Black enamel carriage with a pica escapement and a firm hard-rubber platen.",
+      "tags": [
+        "pica"
+      ],
+      "file": "classic_black.usdz",
+      "source": "classic_black.usda",
+      "parts": [
+        "pivot_Platen",
+        "Frame"
+      ],
+      "mechanics": {
+        "platenLength": 0.245,
+        "platenRadius": 0.0165,
+        "pitch": 0.00254,
+        "lineHeight": 0.0042333,
+        "printAngleDegrees": 8.0,
+        "paperExitDegrees": 30.0,
+        "paperEntryDegrees": -125.0,
+        "bailAngleDegrees": 21.0,
+        "returnSpeed": 0.9,
+        "powerReturn": false,
+        "escapementSnap": 0.012,
+        "anchors": {
+          "knobLeft": [
+            -0.1365,
+            0.0,
+            0.0
+          ],
+          "knobRight": [
+            0.1365,
+            0.0,
+            0.0
+          ],
+          "returnLever": [
+            -0.1315,
+            0.018,
+            0.006
+          ],
+          "bail": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "releaseLever": [
+            0.11649999999999999,
+            0.026,
+            -0.026
+          ],
+          "marginRack": [
+            0.0,
+            -0.033,
+            0.026
+          ]
+        }
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.6,
+        "brightness": 0.6,
+        "decay": 1.0,
+        "ring": 0.3
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.06
+      },
+      "palette": {}
+    },
+    {
+      "id": "wide_ledger",
+      "name": "Wide Ledger",
+      "era": "Office",
+      "summary": "Extra wide 14 inch carriage for ledgers. Heavy and slow on the return, with a deep thud at the stop.",
+      "tags": [
+        "wide",
+        "pica"
+      ],
+      "file": "wide_ledger.usdz",
+      "source": "wide_ledger.usda",
+      "parts": [
+        "pivot_Platen",
+        "Frame"
+      ],
+      "mechanics": {
+        "platenLength": 0.36,
+        "platenRadius": 0.018,
+        "pitch": 0.00254,
+        "lineHeight": 0.0042333,
+        "printAngleDegrees": 8.0,
+        "paperExitDegrees": 30.0,
+        "paperEntryDegrees": -125.0,
+        "bailAngleDegrees": 21.0,
+        "returnSpeed": 0.65,
+        "powerReturn": false,
+        "escapementSnap": 0.012,
+        "anchors": {
+          "knobLeft": [
+            -0.194,
+            0.0,
+            0.0
+          ],
+          "knobRight": [
+            0.194,
+            0.0,
+            0.0
+          ],
+          "returnLever": [
+            -0.189,
+            0.018,
+            0.006
+          ],
+          "bail": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "releaseLever": [
+            0.174,
+            0.026,
+            -0.026
+          ],
+          "marginRack": [
+            0.0,
+            -0.033,
+            0.026
+          ]
+        }
+      },
+      "sound": {
+        "pitch": 0.75,
+        "body": 0.95,
+        "brightness": 0.45,
+        "decay": 1.3,
+        "ring": 0.25
+      },
+      "animation": {
+        "speed": 0.8,
+        "overshoot": 0.04
+      },
+      "palette": {}
+    },
+    {
+      "id": "chrome_shroud",
+      "name": "Chrome Shroud",
+      "era": "1950s",
+      "summary": "Chrome end shrouds and a mirror paper table. Elite type, quick escapement.",
+      "tags": [
+        "elite"
+      ],
+      "file": "chrome_shroud.usdz",
+      "source": "chrome_shroud.usda",
+      "parts": [
+        "pivot_Platen",
+        "Frame"
+      ],
+      "mechanics": {
+        "platenLength": 0.25,
+        "platenRadius": 0.0165,
+        "pitch": 0.0021167,
+        "lineHeight": 0.0042333,
+        "printAngleDegrees": 8.0,
+        "paperExitDegrees": 30.0,
+        "paperEntryDegrees": -125.0,
+        "bailAngleDegrees": 21.0,
+        "returnSpeed": 1.0,
+        "powerReturn": false,
+        "escapementSnap": 0.012,
+        "anchors": {
+          "knobLeft": [
+            -0.139,
+            0.0,
+            0.0
+          ],
+          "knobRight": [
+            0.139,
+            0.0,
+            0.0
+          ],
+          "returnLever": [
+            -0.134,
+            0.018,
+            0.006
+          ],
+          "bail": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "releaseLever": [
+            0.119,
+            0.026,
+            -0.026
+          ],
+          "marginRack": [
+            0.0,
+            -0.033,
+            0.026
+          ]
+        }
+      },
+      "sound": {
+        "pitch": 1.15,
+        "body": 0.5,
+        "brightness": 0.8,
+        "decay": 1.0,
+        "ring": 0.45
+      },
+      "animation": {
+        "speed": 1.05,
+        "overshoot": 0.07
+      },
+      "palette": {}
+    },
+    {
+      "id": "open_rail",
+      "name": "Open Rail",
+      "era": "1910s",
+      "summary": "Ringed end loops and wire paper supports. Loud, bouncy carriage.",
+      "tags": [
+        "pica",
+        "wire"
+      ],
+      "file": "open_rail.usdz",
+      "source": "open_rail.usda",
+      "parts": [
+        "pivot_Platen",
+        "Frame"
+      ],
+      "mechanics": {
+        "platenLength": 0.245,
+        "platenRadius": 0.016,
+        "pitch": 0.00254,
+        "lineHeight": 0.0042333,
+        "printAngleDegrees": 8.0,
+        "paperExitDegrees": 30.0,
+        "paperEntryDegrees": -125.0,
+        "bailAngleDegrees": 21.0,
+        "returnSpeed": 1.1,
+        "powerReturn": false,
+        "escapementSnap": 0.02,
+        "anchors": {
+          "knobLeft": [
+            -0.1365,
+            0.0,
+            0.0
+          ],
+          "knobRight": [
+            0.1365,
+            0.0,
+            0.0
+          ],
+          "returnLever": [
+            -0.1315,
+            0.018,
+            0.006
+          ],
+          "bail": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "releaseLever": [
+            0.11649999999999999,
+            0.026,
+            -0.026
+          ],
+          "marginRack": [
+            0.0,
+            -0.033,
+            0.026
+          ]
+        }
+      },
+      "sound": {
+        "pitch": 1.1,
+        "body": 0.4,
+        "brightness": 0.85,
+        "decay": 1.2,
+        "ring": 0.6
+      },
+      "animation": {
+        "speed": 1.1,
+        "overshoot": 0.14
+      },
+      "palette": {}
+    },
+    {
+      "id": "streamline",
+      "name": "Streamline",
+      "era": "1950s",
+      "summary": "Rounded end covers and a cream paper table. Smooth, damped glide.",
+      "tags": [
+        "pica"
+      ],
+      "file": "streamline.usdz",
+      "source": "streamline.usda",
+      "parts": [
+        "pivot_Platen",
+        "Frame"
+      ],
+      "mechanics": {
+        "platenLength": 0.25,
+        "platenRadius": 0.017,
+        "pitch": 0.00254,
+        "lineHeight": 0.0042333,
+        "printAngleDegrees": 8.0,
+        "paperExitDegrees": 30.0,
+        "paperEntryDegrees": -125.0,
+        "bailAngleDegrees": 21.0,
+        "returnSpeed": 0.95,
+        "powerReturn": false,
+        "escapementSnap": 0.008,
+        "anchors": {
+          "knobLeft": [
+            -0.139,
+            0.0,
+            0.0
+          ],
+          "knobRight": [
+            0.139,
+            0.0,
+            0.0
+          ],
+          "returnLever": [
+            -0.134,
+            0.018,
+            0.006
+          ],
+          "bail": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "releaseLever": [
+            0.119,
+            0.026,
+            -0.026
+          ],
+          "marginRack": [
+            0.0,
+            -0.033,
+            0.026
+          ]
+        }
+      },
+      "sound": {
+        "pitch": 0.95,
+        "body": 0.7,
+        "brightness": 0.45,
+        "decay": 0.8,
+        "ring": 0.15
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.03
+      },
+      "palette": {}
+    },
+    {
+      "id": "brass_ends",
+      "name": "Brass Ends",
+      "era": "Victorian",
+      "summary": "Brass end plates with copper rosettes and a walnut paper table.",
+      "tags": [
+        "brass",
+        "pica"
+      ],
+      "file": "brass_ends.usdz",
+      "source": "brass_ends.usda",
+      "parts": [
+        "pivot_Platen",
+        "Frame"
+      ],
+      "mechanics": {
+        "platenLength": 0.245,
+        "platenRadius": 0.0165,
+        "pitch": 0.00254,
+        "lineHeight": 0.0042333,
+        "printAngleDegrees": 8.0,
+        "paperExitDegrees": 30.0,
+        "paperEntryDegrees": -125.0,
+        "bailAngleDegrees": 21.0,
+        "returnSpeed": 0.85,
+        "powerReturn": false,
+        "escapementSnap": 0.012,
+        "anchors": {
+          "knobLeft": [
+            -0.1365,
+            0.0,
+            0.0
+          ],
+          "knobRight": [
+            0.1365,
+            0.0,
+            0.0
+          ],
+          "returnLever": [
+            -0.1315,
+            0.018,
+            0.006
+          ],
+          "bail": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "releaseLever": [
+            0.11649999999999999,
+            0.026,
+            -0.026
+          ],
+          "marginRack": [
+            0.0,
+            -0.033,
+            0.026
+          ]
+        }
+      },
+      "sound": {
+        "pitch": 0.9,
+        "body": 0.6,
+        "brightness": 0.75,
+        "decay": 1.3,
+        "ring": 0.7
+      },
+      "animation": {
+        "speed": 0.95,
+        "overshoot": 0.08
+      },
+      "palette": {}
+    },
+    {
+      "id": "red_platen",
+      "name": "Red Platen",
+      "era": "1960s",
+      "summary": "Cream carriage around a soft red rubber platen. Elite pitch, quieter strikes.",
+      "tags": [
+        "elite",
+        "soft platen"
+      ],
+      "file": "red_platen.usdz",
+      "source": "red_platen.usda",
+      "parts": [
+        "pivot_Platen",
+        "Frame"
+      ],
+      "mechanics": {
+        "platenLength": 0.24,
+        "platenRadius": 0.016,
+        "pitch": 0.0021167,
+        "lineHeight": 0.0042333,
+        "printAngleDegrees": 8.0,
+        "paperExitDegrees": 30.0,
+        "paperEntryDegrees": -125.0,
+        "bailAngleDegrees": 21.0,
+        "returnSpeed": 0.9,
+        "powerReturn": false,
+        "escapementSnap": 0.012,
+        "anchors": {
+          "knobLeft": [
+            -0.134,
+            0.0,
+            0.0
+          ],
+          "knobRight": [
+            0.134,
+            0.0,
+            0.0
+          ],
+          "returnLever": [
+            -0.129,
+            0.018,
+            0.006
+          ],
+          "bail": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "releaseLever": [
+            0.11399999999999999,
+            0.026,
+            -0.026
+          ],
+          "marginRack": [
+            0.0,
+            -0.033,
+            0.026
+          ]
+        },
+        "platenHardness": 0.45
+      },
+      "sound": {
+        "pitch": 1.05,
+        "body": 0.5,
+        "brightness": 0.4,
+        "decay": 0.7,
+        "ring": 0.1
+      },
+      "animation": {
+        "speed": 1.05,
+        "overshoot": 0.05
+      },
+      "palette": {}
+    },
+    {
+      "id": "minimal_power",
+      "name": "Minimal Power",
+      "era": "1980s",
+      "summary": "Thin aluminium carriage with an electric return motor. The return lever only taps a switch.",
+      "tags": [
+        "electric",
+        "elite"
+      ],
+      "file": "minimal_power.usdz",
+      "source": "minimal_power.usda",
+      "parts": [
+        "pivot_Platen",
+        "Frame"
+      ],
+      "mechanics": {
+        "platenLength": 0.24,
+        "platenRadius": 0.0155,
+        "pitch": 0.0021167,
+        "lineHeight": 0.0042333,
+        "printAngleDegrees": 8.0,
+        "paperExitDegrees": 30.0,
+        "paperEntryDegrees": -125.0,
+        "bailAngleDegrees": 21.0,
+        "returnSpeed": 1.6,
+        "powerReturn": true,
+        "escapementSnap": 0.012,
+        "anchors": {
+          "knobLeft": [
+            -0.134,
+            0.0,
+            0.0
+          ],
+          "knobRight": [
+            0.134,
+            0.0,
+            0.0
+          ],
+          "returnLever": [
+            -0.129,
+            0.018,
+            0.006
+          ],
+          "bail": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "releaseLever": [
+            0.11399999999999999,
+            0.026,
+            -0.026
+          ],
+          "marginRack": [
+            0.0,
+            -0.033,
+            0.026
+          ]
+        }
+      },
+      "sound": {
+        "pitch": 1.2,
+        "body": 0.35,
+        "brightness": 0.6,
+        "decay": 0.6,
+        "ring": 0.05
+      },
+      "animation": {
+        "speed": 1.2,
+        "overshoot": 0.02
+      },
+      "palette": {}
+    }
+  ]
+}

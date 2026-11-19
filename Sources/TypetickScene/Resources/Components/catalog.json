@@ -1,0 +1,451 @@
+{
+  "version": 1,
+  "units": "meters",
+  "upAxis": "Y",
+  "kinds": [
+    {
+      "kind": "chassis",
+      "title": "Chassis",
+      "summary": "The body and frame. Sets the keyboard rake, segment and shift mechanism.",
+      "variants": [
+        "atlas_upright",
+        "courier_portable",
+        "bureau_standard",
+        "deco_imperial",
+        "orbit_70",
+        "foundry_industrial",
+        "slate_ultraflat",
+        "bauhaus_cylinder"
+      ]
+    },
+    {
+      "kind": "keys",
+      "title": "Keys",
+      "summary": "Keycaps, key levers and space bar.",
+      "variants": [
+        "glass_ring",
+        "bakelite_round",
+        "chiclet_square",
+        "tombstone_scoop",
+        "hex_brass",
+        "disc_flat",
+        "sculpted_dish",
+        "pill_soft"
+      ]
+    },
+    {
+      "kind": "typebars",
+      "title": "Typebars",
+      "summary": "The type arms that swing up and strike the paper.",
+      "variants": [
+        "slim_steel",
+        "heavy_forged",
+        "skeleton",
+        "brass_bar",
+        "swan_neck",
+        "twin_rail",
+        "short_black",
+        "chrome_long"
+      ]
+    },
+    {
+      "kind": "carriage",
+      "title": "Carriage",
+      "summary": "Platen, frame and paper table. Sets pitch, width and return mechanics.",
+      "variants": [
+        "classic_black",
+        "wide_ledger",
+        "chrome_shroud",
+        "open_rail",
+        "streamline",
+        "brass_ends",
+        "red_platen",
+        "minimal_power"
+      ]
+    },
+    {
+      "kind": "knobs",
+      "title": "Platen Knobs",
+      "summary": "The knobs that turn the platen; detents set the ratchet feel.",
+      "variants": [
+        "fluted_bakelite",
+        "knurled_chrome",
+        "mushroom",
+        "wing",
+        "faceted",
+        "ribbed_rubber",
+        "disc",
+        "crank"
+      ]
+    },
+    {
+      "kind": "returnLever",
+      "title": "Return Lever",
+      "summary": "Line space and carriage return lever.",
+      "variants": [
+        "chrome_arm",
+        "paddle",
+        "ball_tip",
+        "deco_fin",
+        "hook",
+        "long_swan",
+        "short_stub",
+        "loop"
+      ]
+    },
+    {
+      "kind": "paperBail",
+      "title": "Paper Bail",
+      "summary": "Holds the sheet against the platen; includes the paper release lever.",
+      "variants": [
+        "roller_bail",
+        "wire_bail",
+        "scale_plate",
+        "double_rod",
+        "wide_rollers",
+        "finger_hooks",
+        "brass_bail",
+        "shield"
+      ]
+    },
+    {
+      "kind": "ribbon",
+      "title": "Ribbon",
+      "summary": "Ink ribbon spools and the vibrator that lifts the ribbon for every strike.",
+      "variants": [
+        "open_metal",
+        "covered_cups",
+        "cassette",
+        "brass_reels",
+        "vented",
+        "wooden",
+        "translucent",
+        "double_stack"
+      ]
+    },
+    {
+      "kind": "correction",
+      "title": "Correction",
+      "summary": "Correction tape spools and lifter used by Delete and Cut.",
+      "variants": [
+        "chalk_cover",
+        "lift_off",
+        "ivory_cover",
+        "film_cover",
+        "paper_patch",
+        "ink_eraser",
+        "tinted_cover",
+        "brass_bellows"
+      ]
+    },
+    {
+      "kind": "bell",
+      "title": "Bell",
+      "summary": "Margin bell and hammer.",
+      "variants": [
+        "classic_dome",
+        "double_gong",
+        "bicycle",
+        "cowbell",
+        "chime_bar",
+        "tiny_ting",
+        "brass_bowl",
+        "spring_coil"
+      ]
+    },
+    {
+      "kind": "marginRack",
+      "title": "Margin Rack",
+      "summary": "Margin stops and tab stops.",
+      "variants": [
+        "sliding_tabs",
+        "pointer_arrows",
+        "ball_stops",
+        "hook_clips",
+        "brass_riders",
+        "flag_stops",
+        "push_buttons",
+        "magnetic"
+      ]
+    },
+    {
+      "kind": "recorder",
+      "title": "Recorder",
+      "summary": "The mechanical clipboard bolted to the side of the machine.",
+      "variants": [
+        "telegraph_perforator",
+        "gear_drum",
+        "brass_chronograph",
+        "teletype_reader",
+        "cam_bank",
+        "jacquard_cards",
+        "music_box",
+        "glass_tube"
+      ]
+    }
+  ],
+  "materialRoles": {
+    "paint": {
+      "color": [
+        0.04,
+        0.04,
+        0.045
+      ],
+      "metallic": 0.0,
+      "roughness": 0.32,
+      "clearcoat": 0.8
+    },
+    "paintAccent": {
+      "color": [
+        0.78,
+        0.62,
+        0.3
+      ],
+      "metallic": 0.6,
+      "roughness": 0.35,
+      "clearcoat": 0.3
+    },
+    "paintSecond": {
+      "color": [
+        0.86,
+        0.83,
+        0.74
+      ],
+      "metallic": 0.0,
+      "roughness": 0.38,
+      "clearcoat": 0.6
+    },
+    "chrome": {
+      "color": [
+        0.92,
+        0.92,
+        0.94
+      ],
+      "metallic": 1.0,
+      "roughness": 0.08,
+      "clearcoat": 0.0
+    },
+    "steel": {
+      "color": [
+        0.62,
+        0.63,
+        0.65
+      ],
+      "metallic": 1.0,
+      "roughness": 0.32,
+      "clearcoat": 0.0
+    },
+    "blackSteel": {
+      "color": [
+        0.1,
+        0.1,
+        0.11
+      ],
+      "metallic": 0.9,
+      "roughness": 0.42,
+      "clearcoat": 0.0
+    },
+    "brass": {
+      "color": [
+        0.86,
+        0.68,
+        0.36
+      ],
+      "metallic": 1.0,
+      "roughness": 0.26,
+      "clearcoat": 0.0
+    },
+    "copper": {
+      "color": [
+        0.85,
+        0.5,
+        0.36
+      ],
+      "metallic": 1.0,
+      "roughness": 0.3,
+      "clearcoat": 0.0
+    },
+    "rubber": {
+      "color": [
+        0.035,
+        0.035,
+        0.037
+      ],
+      "metallic": 0.0,
+      "roughness": 0.78,
+      "clearcoat": 0.0
+    },
+    "redRubber": {
+      "color": [
+        0.42,
+        0.07,
+        0.05
+      ],
+      "metallic": 0.0,
+      "roughness": 0.72,
+      "clearcoat": 0.0
+    },
+    "bakelite": {
+      "color": [
+        0.05,
+        0.035,
+        0.03
+      ],
+      "metallic": 0.0,
+      "roughness": 0.22,
+      "clearcoat": 0.9
+    },
+    "keyTop": {
+      "color": [
+        0.05,
+        0.05,
+        0.05
+      ],
+      "metallic": 0.0,
+      "roughness": 0.25,
+      "clearcoat": 0.7
+    },
+    "keyBody": {
+      "color": [
+        0.07,
+        0.07,
+        0.07
+      ],
+      "metallic": 0.0,
+      "roughness": 0.3,
+      "clearcoat": 0.5
+    },
+    "glass": {
+      "color": [
+        0.9,
+        0.95,
+        0.95
+      ],
+      "metallic": 0.0,
+      "roughness": 0.02,
+      "clearcoat": 1.0,
+      "opacity": 0.35
+    },
+    "smoked": {
+      "color": [
+        0.18,
+        0.14,
+        0.11
+      ],
+      "metallic": 0.0,
+      "roughness": 0.06,
+      "clearcoat": 1.0,
+      "opacity": 0.6
+    },
+    "felt": {
+      "color": [
+        0.13,
+        0.2,
+        0.13
+      ],
+      "metallic": 0.0,
+      "roughness": 0.95,
+      "clearcoat": 0.0
+    },
+    "plastic": {
+      "color": [
+        0.8,
+        0.78,
+        0.72
+      ],
+      "metallic": 0.0,
+      "roughness": 0.4,
+      "clearcoat": 0.2
+    },
+    "darkPlastic": {
+      "color": [
+        0.12,
+        0.12,
+        0.13
+      ],
+      "metallic": 0.0,
+      "roughness": 0.45,
+      "clearcoat": 0.1
+    },
+    "wood": {
+      "color": [
+        0.36,
+        0.2,
+        0.1
+      ],
+      "metallic": 0.0,
+      "roughness": 0.5,
+      "clearcoat": 0.6
+    },
+    "enamel": {
+      "color": [
+        0.93,
+        0.92,
+        0.88
+      ],
+      "metallic": 0.0,
+      "roughness": 0.15,
+      "clearcoat": 1.0
+    },
+    "tape": {
+      "color": [
+        0.93,
+        0.88,
+        0.7
+      ],
+      "metallic": 0.0,
+      "roughness": 0.8,
+      "clearcoat": 0.0
+    },
+    "medium": {
+      "color": [
+        0.93,
+        0.88,
+        0.7
+      ],
+      "metallic": 0.0,
+      "roughness": 0.75,
+      "clearcoat": 0.0
+    },
+    "ribbon": {
+      "color": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "metallic": 0.0,
+      "roughness": 0.85,
+      "clearcoat": 0.0
+    },
+    "correction": {
+      "color": [
+        0.97,
+        0.96,
+        0.93
+      ],
+      "metallic": 0.0,
+      "roughness": 0.9,
+      "clearcoat": 0.0
+    },
+    "scale": {
+      "color": [
+        0.9,
+        0.88,
+        0.8
+      ],
+      "metallic": 0.0,
+      "roughness": 0.5,
+      "clearcoat": 0.2
+    },
+    "lamp": {
+      "color": [
+        1.0,
+        0.8,
+        0.5
+      ],
+      "metallic": 0.0,
+      "roughness": 0.3,
+      "clearcoat": 0.0
+    }
+  }
+}

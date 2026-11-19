@@ -1,0 +1,241 @@
+{
+  "kind": "typebars",
+  "title": "Typebars",
+  "summary": "The type arms that swing up and strike the paper.",
+  "variants": [
+    {
+      "id": "slim_steel",
+      "name": "Slim Steel",
+      "era": "Classic",
+      "summary": "Thin stamped steel bars. Quick swing and a clean, sharp strike.",
+      "tags": [],
+      "file": "slim_steel.usdz",
+      "source": "slim_steel.usda",
+      "parts": [
+        "Typebar"
+      ],
+      "mechanics": {
+        "swingTime": 0.034,
+        "returnTime": 0.07,
+        "impactForce": 0.75
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.5,
+        "brightness": 0.7,
+        "decay": 1.0,
+        "ring": 0.25
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.06
+      },
+      "palette": {}
+    },
+    {
+      "id": "heavy_forged",
+      "name": "Heavy Forged",
+      "era": "Industrial",
+      "summary": "Fat forged bars with a deep slug. Slower, but they hit like a hammer and emboss soft paper.",
+      "tags": [],
+      "file": "heavy_forged.usdz",
+      "source": "heavy_forged.usda",
+      "parts": [
+        "Typebar"
+      ],
+      "mechanics": {
+        "swingTime": 0.046,
+        "returnTime": 0.09,
+        "impactForce": 1.0
+      },
+      "sound": {
+        "pitch": 0.75,
+        "body": 0.95,
+        "brightness": 0.55,
+        "decay": 1.1,
+        "ring": 0.2
+      },
+      "animation": {
+        "speed": 0.85,
+        "overshoot": 0.03
+      },
+      "palette": {}
+    },
+    {
+      "id": "skeleton",
+      "name": "Skeleton",
+      "era": "Racing",
+      "summary": "Lightened, perforated bars for speed typists. Fastest swing, papery snap.",
+      "tags": [],
+      "file": "skeleton.usdz",
+      "source": "skeleton.usda",
+      "parts": [
+        "Typebar"
+      ],
+      "mechanics": {
+        "swingTime": 0.026,
+        "returnTime": 0.055,
+        "impactForce": 0.6
+      },
+      "sound": {
+        "pitch": 1.25,
+        "body": 0.3,
+        "brightness": 0.85,
+        "decay": 0.8,
+        "ring": 0.3
+      },
+      "animation": {
+        "speed": 1.2,
+        "overshoot": 0.1
+      },
+      "palette": {}
+    },
+    {
+      "id": "brass_bar",
+      "name": "Brass Taper",
+      "era": "Victorian",
+      "summary": "Tapered solid brass bars. Rich ringing strike with a long tail.",
+      "tags": [],
+      "file": "brass_bar.usdz",
+      "source": "brass_bar.usda",
+      "parts": [
+        "Typebar"
+      ],
+      "mechanics": {
+        "swingTime": 0.04,
+        "returnTime": 0.08,
+        "impactForce": 0.85
+      },
+      "sound": {
+        "pitch": 0.9,
+        "body": 0.6,
+        "brightness": 0.8,
+        "decay": 1.4,
+        "ring": 0.8
+      },
+      "animation": {
+        "speed": 0.95,
+        "overshoot": 0.08
+      },
+      "palette": {}
+    },
+    {
+      "id": "swan_neck",
+      "name": "Swan Neck",
+      "era": "1930s",
+      "summary": "S-curved bars that clear a deeper basket. Smooth arc and a soft-edged strike.",
+      "tags": [],
+      "file": "swan_neck.usdz",
+      "source": "swan_neck.usda",
+      "parts": [
+        "Typebar"
+      ],
+      "mechanics": {
+        "swingTime": 0.038,
+        "returnTime": 0.075,
+        "impactForce": 0.7
+      },
+      "sound": {
+        "pitch": 0.95,
+        "body": 0.55,
+        "brightness": 0.6,
+        "decay": 1.0,
+        "ring": 0.35
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.12
+      },
+      "palette": {}
+    },
+    {
+      "id": "twin_rail",
+      "name": "Twin Rail",
+      "era": "Precision",
+      "summary": "Double rails with cross ties: no twisting, perfectly aligned type.",
+      "tags": [],
+      "file": "twin_rail.usdz",
+      "source": "twin_rail.usda",
+      "parts": [
+        "Typebar"
+      ],
+      "mechanics": {
+        "swingTime": 0.036,
+        "returnTime": 0.07,
+        "impactForce": 0.8,
+        "alignmentJitter": 0.25
+      },
+      "sound": {
+        "pitch": 1.05,
+        "body": 0.6,
+        "brightness": 0.65,
+        "decay": 0.9,
+        "ring": 0.15
+      },
+      "animation": {
+        "speed": 1.0,
+        "overshoot": 0.04
+      },
+      "palette": {}
+    },
+    {
+      "id": "short_black",
+      "name": "Blackened Knuckle",
+      "era": "Wartime",
+      "summary": "Blackened bars with a heavy knuckle at the hinge. Gritty, loose, noticeable misalignment.",
+      "tags": [],
+      "file": "short_black.usdz",
+      "source": "short_black.usda",
+      "parts": [
+        "Typebar"
+      ],
+      "mechanics": {
+        "swingTime": 0.042,
+        "returnTime": 0.085,
+        "impactForce": 0.9,
+        "alignmentJitter": 1.8
+      },
+      "sound": {
+        "pitch": 0.85,
+        "body": 0.8,
+        "brightness": 0.5,
+        "decay": 0.9,
+        "ring": 0.1
+      },
+      "animation": {
+        "speed": 0.9,
+        "overshoot": 0.15
+      },
+      "palette": {}
+    },
+    {
+      "id": "chrome_long",
+      "name": "Chrome Rod",
+      "era": "Streamline",
+      "summary": "Polished round rods on ball hinges. Reflective, light and bright sounding.",
+      "tags": [],
+      "file": "chrome_long.usdz",
+      "source": "chrome_long.usda",
+      "parts": [
+        "Typebar"
+      ],
+      "mechanics": {
+        "swingTime": 0.032,
+        "returnTime": 0.065,
+        "impactForce": 0.7
+      },
+      "sound": {
+        "pitch": 1.15,
+        "body": 0.4,
+        "brightness": 0.9,
+        "decay": 1.1,
+        "ring": 0.55
+      },
+      "animation": {
+        "speed": 1.1,
+        "overshoot": 0.09
+      },
+      "palette": {}
+    }
+  ]
+}

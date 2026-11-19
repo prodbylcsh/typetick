@@ -1,0 +1,869 @@
+{
+  "kind": "chassis",
+  "title": "Chassis",
+  "summary": "The body and frame. Sets the keyboard rake, segment and shift mechanism.",
+  "variants": [
+    {
+      "id": "atlas_upright",
+      "name": "Atlas Upright",
+      "era": "1923",
+      "summary": "Tall open-frame office upright with window cheeks and gold pinstriping. Carriage shift, ringing steel frame.",
+      "tags": [
+        "open frame",
+        "steel"
+      ],
+      "file": "atlas_upright.usdz",
+      "source": "atlas_upright.usda",
+      "parts": [
+        "Body",
+        "Segment",
+        "Rails",
+        "Feet"
+      ],
+      "mechanics": {
+        "anchors": {
+          "carriage": [
+            0.0,
+            0.14,
+            -0.07
+          ],
+          "spoolLeft": [
+            -0.125,
+            0.11,
+            -0.028
+          ],
+          "spoolRight": [
+            0.125,
+            0.11,
+            -0.028
+          ],
+          "correctionLeft": [
+            -0.078,
+            0.104,
+            -0.04
+          ],
+          "correctionRight": [
+            0.078,
+            0.104,
+            -0.04
+          ],
+          "bell": [
+            -0.16,
+            0.096,
+            -0.112
+          ],
+          "recorder": [
+            0.33,
+            0.0,
+            0.02
+          ]
+        },
+        "basket": {
+          "center": [
+            0.0,
+            0.075,
+            -0.03
+          ],
+          "radius": 0.07,
+          "arcDegrees": 150.0,
+          "restTiltDegrees": 26.0
+        },
+        "keyboard": {
+          "frontZ": 0.15,
+          "rowPitchZ": 0.0215,
+          "frontY": 0.052,
+          "rowRiseY": 0.0125,
+          "keyPitchX": 0.0205,
+          "rowStaggerX": [
+            0.0,
+            -0.0052,
+            -0.0102,
+            -0.0154
+          ],
+          "spaceZ": 0.176,
+          "spaceY": 0.04
+        },
+        "shiftType": "carriage",
+        "shiftTravel": 0.0065,
+        "frameResonance": 0.9
+      },
+      "sound": {
+        "pitch": 0.85,
+        "body": 0.8,
+        "brightness": 0.55,
+        "decay": 1.3,
+        "ring": 0.7
+      },
+      "animation": {
+        "speed": 0.9,
+        "travel": 1.1,
+        "overshoot": 0.12
+      },
+      "palette": {
+        "paint": [
+          0.047058823529411764,
+          0.043137254901960784,
+          0.043137254901960784
+        ],
+        "paintAccent": [
+          0.7686274509803922,
+          0.6039215686274509,
+          0.2901960784313726
+        ]
+      }
+    },
+    {
+      "id": "courier_portable",
+      "name": "Courier Portable",
+      "era": "1956",
+      "summary": "Streamlined two-tone portable with chrome belt line. Light, slightly hollow sounding case.",
+      "tags": [
+        "portable",
+        "two-tone"
+      ],
+      "file": "courier_portable.usdz",
+      "source": "courier_portable.usda",
+      "parts": [
+        "Body",
+        "Segment",
+        "Rails",
+        "Feet"
+      ],
+      "mechanics": {
+        "anchors": {
+          "carriage": [
+            0.0,
+            0.14,
+            -0.07
+          ],
+          "spoolLeft": [
+            -0.125,
+            0.11,
+            -0.028
+          ],
+          "spoolRight": [
+            0.125,
+            0.11,
+            -0.028
+          ],
+          "correctionLeft": [
+            -0.078,
+            0.104,
+            -0.04
+          ],
+          "correctionRight": [
+            0.078,
+            0.104,
+            -0.04
+          ],
+          "bell": [
+            -0.16,
+            0.096,
+            -0.112
+          ],
+          "recorder": [
+            0.33,
+            0.0,
+            0.02
+          ]
+        },
+        "basket": {
+          "center": [
+            0.0,
+            0.075,
+            -0.03
+          ],
+          "radius": 0.07,
+          "arcDegrees": 150.0,
+          "restTiltDegrees": 26.0
+        },
+        "keyboard": {
+          "frontZ": 0.15,
+          "rowPitchZ": 0.0215,
+          "frontY": 0.05,
+          "rowRiseY": 0.0075,
+          "keyPitchX": 0.0205,
+          "rowStaggerX": [
+            0.0,
+            -0.0052,
+            -0.0102,
+            -0.0154
+          ],
+          "spaceZ": 0.176,
+          "spaceY": 0.04
+        },
+        "shiftType": "segment",
+        "shiftTravel": 0.0055,
+        "frameResonance": 0.4
+      },
+      "sound": {
+        "pitch": 1.1,
+        "body": 0.45,
+        "brightness": 0.7,
+        "decay": 0.9,
+        "ring": 0.25
+      },
+      "animation": {
+        "speed": 1.05,
+        "travel": 0.95,
+        "overshoot": 0.08
+      },
+      "palette": {
+        "paint": [
+          0.49019607843137253,
+          0.6392156862745098,
+          0.6039215686274509
+        ],
+        "paintSecond": [
+          0.9137254901960784,
+          0.8862745098039215,
+          0.8117647058823529
+        ]
+      }
+    },
+    {
+      "id": "bureau_standard",
+      "name": "Bureau Standard",
+      "era": "1964",
+      "summary": "Wide office desktop machine. Heavy walls, ventilation grilles, damped thick case.",
+      "tags": [
+        "office",
+        "heavy"
+      ],
+      "file": "bureau_standard.usdz",
+      "source": "bureau_standard.usda",
+      "parts": [
+        "Body",
+        "Segment",
+        "Rails",
+        "Feet"
+      ],
+      "mechanics": {
+        "anchors": {
+          "carriage": [
+            0.0,
+            0.14,
+            -0.07
+          ],
+          "spoolLeft": [
+            -0.125,
+            0.11,
+            -0.028
+          ],
+          "spoolRight": [
+            0.125,
+            0.11,
+            -0.028
+          ],
+          "correctionLeft": [
+            -0.078,
+            0.104,
+            -0.04
+          ],
+          "correctionRight": [
+            0.078,
+            0.104,
+            -0.04
+          ],
+          "bell": [
+            -0.16,
+            0.096,
+            -0.112
+          ],
+          "recorder": [
+            0.33,
+            0.0,
+            0.02
+          ]
+        },
+        "basket": {
+          "center": [
+            0.0,
+            0.075,
+            -0.03
+          ],
+          "radius": 0.07,
+          "arcDegrees": 150.0,
+          "restTiltDegrees": 26.0
+        },
+        "keyboard": {
+          "frontZ": 0.15,
+          "rowPitchZ": 0.0215,
+          "frontY": 0.05,
+          "rowRiseY": 0.0095,
+          "keyPitchX": 0.021,
+          "rowStaggerX": [
+            0.0,
+            -0.0052,
+            -0.0102,
+            -0.0154
+          ],
+          "spaceZ": 0.176,
+          "spaceY": 0.04
+        },
+        "shiftType": "segment",
+        "shiftTravel": 0.0055,
+        "frameResonance": 0.3
+      },
+      "sound": {
+        "pitch": 0.8,
+        "body": 0.9,
+        "brightness": 0.4,
+        "decay": 0.8,
+        "ring": 0.15
+      },
+      "animation": {
+        "speed": 0.95,
+        "travel": 1.0,
+        "overshoot": 0.05
+      },
+      "palette": {
+        "paint": [
+          0.5490196078431373,
+          0.5411764705882353,
+          0.5137254901960784
+        ],
+        "paintSecond": [
+          0.3568627450980392,
+          0.35294117647058826,
+          0.3333333333333333
+        ]
+      }
+    },
+    {
+      "id": "deco_imperial",
+      "name": "Deco Imperial",
+      "era": "1934",
+      "summary": "Stepped art-deco tiers, chrome fins and a sunburst medallion. Bright metallic voice.",
+      "tags": [
+        "art deco",
+        "chrome"
+      ],
+      "file": "deco_imperial.usdz",
+      "source": "deco_imperial.usda",
+      "parts": [
+        "Body",
+        "Segment",
+        "Rails",
+        "Feet"
+      ],
+      "mechanics": {
+        "anchors": {
+          "carriage": [
+            0.0,
+            0.14,
+            -0.07
+          ],
+          "spoolLeft": [
+            -0.125,
+            0.11,
+            -0.028
+          ],
+          "spoolRight": [
+            0.125,
+            0.11,
+            -0.028
+          ],
+          "correctionLeft": [
+            -0.078,
+            0.104,
+            -0.04
+          ],
+          "correctionRight": [
+            0.078,
+            0.104,
+            -0.04
+          ],
+          "bell": [
+            -0.16,
+            0.096,
+            -0.112
+          ],
+          "recorder": [
+            0.33,
+            0.0,
+            0.02
+          ]
+        },
+        "basket": {
+          "center": [
+            0.0,
+            0.075,
+            -0.03
+          ],
+          "radius": 0.07,
+          "arcDegrees": 150.0,
+          "restTiltDegrees": 26.0
+        },
+        "keyboard": {
+          "frontZ": 0.15,
+          "rowPitchZ": 0.0215,
+          "frontY": 0.05,
+          "rowRiseY": 0.0105,
+          "keyPitchX": 0.0205,
+          "rowStaggerX": [
+            0.0,
+            -0.0052,
+            -0.0102,
+            -0.0154
+          ],
+          "spaceZ": 0.176,
+          "spaceY": 0.04
+        },
+        "shiftType": "segment",
+        "shiftTravel": 0.0055,
+        "frameResonance": 0.65
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.6,
+        "brightness": 0.8,
+        "decay": 1.1,
+        "ring": 0.55
+      },
+      "animation": {
+        "speed": 1.0,
+        "travel": 1.0,
+        "overshoot": 0.1
+      },
+      "palette": {
+        "paint": [
+          0.16470588235294117,
+          0.0784313725490196,
+          0.08627450980392157
+        ]
+      }
+    },
+    {
+      "id": "orbit_70",
+      "name": "Orbit 70",
+      "era": "1971",
+      "summary": "Space-age wedge with a smoked visor and racing stripes. Plastic shell absorbs the clatter.",
+      "tags": [
+        "plastic",
+        "space age"
+      ],
+      "file": "orbit_70.usdz",
+      "source": "orbit_70.usda",
+      "parts": [
+        "Body",
+        "Segment",
+        "Rails",
+        "Feet"
+      ],
+      "mechanics": {
+        "anchors": {
+          "carriage": [
+            0.0,
+            0.14,
+            -0.07
+          ],
+          "spoolLeft": [
+            -0.125,
+            0.11,
+            -0.028
+          ],
+          "spoolRight": [
+            0.125,
+            0.11,
+            -0.028
+          ],
+          "correctionLeft": [
+            -0.078,
+            0.104,
+            -0.04
+          ],
+          "correctionRight": [
+            0.078,
+            0.104,
+            -0.04
+          ],
+          "bell": [
+            -0.16,
+            0.096,
+            -0.112
+          ],
+          "recorder": [
+            0.33,
+            0.0,
+            0.02
+          ]
+        },
+        "basket": {
+          "center": [
+            0.0,
+            0.075,
+            -0.03
+          ],
+          "radius": 0.07,
+          "arcDegrees": 150.0,
+          "restTiltDegrees": 26.0
+        },
+        "keyboard": {
+          "frontZ": 0.15,
+          "rowPitchZ": 0.0215,
+          "frontY": 0.046,
+          "rowRiseY": 0.007,
+          "keyPitchX": 0.0205,
+          "rowStaggerX": [
+            0.0,
+            -0.0052,
+            -0.0102,
+            -0.0154
+          ],
+          "spaceZ": 0.176,
+          "spaceY": 0.04
+        },
+        "shiftType": "segment",
+        "shiftTravel": 0.0055,
+        "frameResonance": 0.15
+      },
+      "sound": {
+        "pitch": 1.25,
+        "body": 0.3,
+        "brightness": 0.6,
+        "decay": 0.6,
+        "ring": 0.05
+      },
+      "animation": {
+        "speed": 1.15,
+        "travel": 0.85,
+        "overshoot": 0.04
+      },
+      "palette": {
+        "paint": [
+          0.8156862745098039,
+          0.34509803921568627,
+          0.10980392156862745
+        ],
+        "paintSecond": [
+          0.9490196078431372,
+          0.9019607843137255,
+          0.788235294117647
+        ]
+      }
+    },
+    {
+      "id": "foundry_industrial",
+      "name": "Foundry Industrial",
+      "era": "1948",
+      "summary": "Bolted steel plates, hammertone paint and a brass maker plate. Loud, metallic, unapologetic.",
+      "tags": [
+        "steel",
+        "bolted"
+      ],
+      "file": "foundry_industrial.usdz",
+      "source": "foundry_industrial.usda",
+      "parts": [
+        "Body",
+        "Segment",
+        "Rails",
+        "Feet"
+      ],
+      "mechanics": {
+        "anchors": {
+          "carriage": [
+            0.0,
+            0.14,
+            -0.07
+          ],
+          "spoolLeft": [
+            -0.125,
+            0.11,
+            -0.028
+          ],
+          "spoolRight": [
+            0.125,
+            0.11,
+            -0.028
+          ],
+          "correctionLeft": [
+            -0.078,
+            0.104,
+            -0.04
+          ],
+          "correctionRight": [
+            0.078,
+            0.104,
+            -0.04
+          ],
+          "bell": [
+            -0.16,
+            0.096,
+            -0.112
+          ],
+          "recorder": [
+            0.33,
+            0.0,
+            0.02
+          ]
+        },
+        "basket": {
+          "center": [
+            0.0,
+            0.075,
+            -0.03
+          ],
+          "radius": 0.07,
+          "arcDegrees": 150.0,
+          "restTiltDegrees": 26.0
+        },
+        "keyboard": {
+          "frontZ": 0.15,
+          "rowPitchZ": 0.0215,
+          "frontY": 0.05,
+          "rowRiseY": 0.0095,
+          "keyPitchX": 0.0205,
+          "rowStaggerX": [
+            0.0,
+            -0.0052,
+            -0.0102,
+            -0.0154
+          ],
+          "spaceZ": 0.176,
+          "spaceY": 0.04
+        },
+        "shiftType": "segment",
+        "shiftTravel": 0.0062,
+        "frameResonance": 0.8
+      },
+      "sound": {
+        "pitch": 0.75,
+        "body": 0.85,
+        "brightness": 0.65,
+        "decay": 1.2,
+        "ring": 0.6
+      },
+      "animation": {
+        "speed": 0.85,
+        "travel": 1.15,
+        "overshoot": 0.14
+      },
+      "palette": {
+        "paint": [
+          0.29411764705882354,
+          0.3137254901960784,
+          0.3215686274509804
+        ]
+      }
+    },
+    {
+      "id": "slate_ultraflat",
+      "name": "Slate Ultraflat",
+      "era": "1979",
+      "summary": "Ultra-slim travel machine with a low platen line and shallow keyboard.",
+      "tags": [
+        "slim",
+        "travel"
+      ],
+      "file": "slate_ultraflat.usdz",
+      "source": "slate_ultraflat.usda",
+      "parts": [
+        "Body",
+        "Segment",
+        "Rails",
+        "Feet"
+      ],
+      "mechanics": {
+        "anchors": {
+          "carriage": [
+            0.0,
+            0.126,
+            -0.068
+          ],
+          "spoolLeft": [
+            -0.125,
+            0.11,
+            -0.028
+          ],
+          "spoolRight": [
+            0.125,
+            0.11,
+            -0.028
+          ],
+          "correctionLeft": [
+            -0.078,
+            0.104,
+            -0.04
+          ],
+          "correctionRight": [
+            0.078,
+            0.104,
+            -0.04
+          ],
+          "bell": [
+            -0.16,
+            0.096,
+            -0.112
+          ],
+          "recorder": [
+            0.33,
+            0.0,
+            0.02
+          ]
+        },
+        "basket": {
+          "center": [
+            0.0,
+            0.064,
+            -0.03
+          ],
+          "radius": 0.07,
+          "arcDegrees": 150.0,
+          "restTiltDegrees": 26.0
+        },
+        "keyboard": {
+          "frontZ": 0.15,
+          "rowPitchZ": 0.0215,
+          "frontY": 0.04,
+          "rowRiseY": 0.0055,
+          "keyPitchX": 0.0205,
+          "rowStaggerX": [
+            0.0,
+            -0.0052,
+            -0.0102,
+            -0.0154
+          ],
+          "spaceZ": 0.176,
+          "spaceY": 0.04
+        },
+        "shiftType": "segment",
+        "shiftTravel": 0.0055,
+        "frameResonance": 0.25
+      },
+      "sound": {
+        "pitch": 1.35,
+        "body": 0.25,
+        "brightness": 0.75,
+        "decay": 0.55,
+        "ring": 0.12
+      },
+      "animation": {
+        "speed": 1.2,
+        "travel": 0.75,
+        "overshoot": 0.03
+      },
+      "palette": {
+        "paint": [
+          0.17254901960784313,
+          0.1843137254901961,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "bauhaus_cylinder",
+      "name": "Bauhaus Cylinder",
+      "era": "1929",
+      "summary": "Pure geometry: a box base under a half-cylinder hood with a single red disc.",
+      "tags": [
+        "bauhaus",
+        "geometric"
+      ],
+      "file": "bauhaus_cylinder.usdz",
+      "source": "bauhaus_cylinder.usda",
+      "parts": [
+        "Body",
+        "Segment",
+        "Rails",
+        "Feet"
+      ],
+      "mechanics": {
+        "anchors": {
+          "carriage": [
+            0.0,
+            0.14,
+            -0.07
+          ],
+          "spoolLeft": [
+            -0.125,
+            0.11,
+            -0.028
+          ],
+          "spoolRight": [
+            0.125,
+            0.11,
+            -0.028
+          ],
+          "correctionLeft": [
+            -0.078,
+            0.104,
+            -0.04
+          ],
+          "correctionRight": [
+            0.078,
+            0.104,
+            -0.04
+          ],
+          "bell": [
+            -0.16,
+            0.096,
+            -0.112
+          ],
+          "recorder": [
+            0.33,
+            0.0,
+            0.02
+          ]
+        },
+        "basket": {
+          "center": [
+            0.0,
+            0.075,
+            -0.03
+          ],
+          "radius": 0.07,
+          "arcDegrees": 150.0,
+          "restTiltDegrees": 26.0
+        },
+        "keyboard": {
+          "frontZ": 0.15,
+          "rowPitchZ": 0.0215,
+          "frontY": 0.05,
+          "rowRiseY": 0.0095,
+          "keyPitchX": 0.0205,
+          "rowStaggerX": [
+            0.0,
+            -0.0052,
+            -0.0102,
+            -0.0154
+          ],
+          "spaceZ": 0.176,
+          "spaceY": 0.04
+        },
+        "shiftType": "carriage",
+        "shiftTravel": 0.0058,
+        "frameResonance": 0.55
+      },
+      "sound": {
+        "pitch": 0.95,
+        "body": 0.65,
+        "brightness": 0.6,
+        "decay": 1.0,
+        "ring": 0.4
+      },
+      "animation": {
+        "speed": 1.0,
+        "travel": 1.0,
+        "overshoot": 0.09
+      },
+      "palette": {
+        "paint": [
+          0.0784313725490196,
+          0.0784313725490196,
+          0.0784313725490196
+        ],
+        "paintAccent": [
+          0.7843137254901961,
+          0.1568627450980392,
+          0.11764705882352941
+        ],
+        "paintSecond": [
+          0.9098039215686274,
+          0.7725490196078432,
+          0.2784313725490196
+        ]
+      }
+    }
+  ]
+}

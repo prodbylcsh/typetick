@@ -1,0 +1,232 @@
+{
+  "kind": "knobs",
+  "title": "Platen Knobs",
+  "summary": "The knobs that turn the platen; detents set the ratchet feel.",
+  "variants": [
+    {
+      "id": "fluted_bakelite",
+      "name": "Fluted Bakelite",
+      "era": "1930s",
+      "summary": "Deep fluted black bakelite. Three soft detents per line.",
+      "tags": [],
+      "file": "fluted_bakelite.usdz",
+      "source": "fluted_bakelite.usda",
+      "parts": [
+        "Knob"
+      ],
+      "mechanics": {
+        "detentsPerLine": 3,
+        "diameter": 0.035,
+        "friction": 0.5
+      },
+      "sound": {
+        "pitch": 0.95,
+        "body": 0.6,
+        "brightness": 0.45,
+        "decay": 0.8,
+        "ring": 0.05
+      },
+      "animation": {
+        "speed": 1.0
+      },
+      "palette": {}
+    },
+    {
+      "id": "knurled_chrome",
+      "name": "Knurled Chrome",
+      "era": "1950s",
+      "summary": "Fine diamond knurling in polished chrome. Six crisp clicks per line.",
+      "tags": [],
+      "file": "knurled_chrome.usdz",
+      "source": "knurled_chrome.usda",
+      "parts": [
+        "Knob"
+      ],
+      "mechanics": {
+        "detentsPerLine": 6,
+        "diameter": 0.031,
+        "friction": 0.35
+      },
+      "sound": {
+        "pitch": 1.3,
+        "body": 0.3,
+        "brightness": 0.9,
+        "decay": 0.9,
+        "ring": 0.5
+      },
+      "animation": {
+        "speed": 1.1
+      },
+      "palette": {}
+    },
+    {
+      "id": "mushroom",
+      "name": "Mushroom",
+      "era": "1920s",
+      "summary": "Wide domed cap on a slim neck. Two heavy detents per line.",
+      "tags": [],
+      "file": "mushroom.usdz",
+      "source": "mushroom.usda",
+      "parts": [
+        "Knob"
+      ],
+      "mechanics": {
+        "detentsPerLine": 2,
+        "diameter": 0.042,
+        "friction": 0.6
+      },
+      "sound": {
+        "pitch": 0.8,
+        "body": 0.75,
+        "brightness": 0.4,
+        "decay": 1.0,
+        "ring": 0.1
+      },
+      "animation": {
+        "speed": 0.9
+      },
+      "palette": {}
+    },
+    {
+      "id": "wing",
+      "name": "Wing Nut",
+      "era": "Industrial",
+      "summary": "Two steel ears instead of a knob. Coarse ratchet, one click per line.",
+      "tags": [],
+      "file": "wing.usdz",
+      "source": "wing.usda",
+      "parts": [
+        "Knob"
+      ],
+      "mechanics": {
+        "detentsPerLine": 1,
+        "diameter": 0.07,
+        "friction": 0.7
+      },
+      "sound": {
+        "pitch": 0.85,
+        "body": 0.5,
+        "brightness": 0.8,
+        "decay": 1.1,
+        "ring": 0.6
+      },
+      "animation": {
+        "speed": 0.85
+      },
+      "palette": {}
+    },
+    {
+      "id": "faceted",
+      "name": "Faceted Brass",
+      "era": "Victorian",
+      "summary": "Octagonal brass knob. Four bright detents per line.",
+      "tags": [],
+      "file": "faceted.usdz",
+      "source": "faceted.usda",
+      "parts": [
+        "Knob"
+      ],
+      "mechanics": {
+        "detentsPerLine": 4,
+        "diameter": 0.034,
+        "friction": 0.45
+      },
+      "sound": {
+        "pitch": 1.1,
+        "body": 0.45,
+        "brightness": 0.85,
+        "decay": 1.2,
+        "ring": 0.7
+      },
+      "animation": {
+        "speed": 1.0
+      },
+      "palette": {}
+    },
+    {
+      "id": "ribbed_rubber",
+      "name": "Ribbed Rubber",
+      "era": "1970s",
+      "summary": "Rubber grip rings. Almost silent, smooth free roll.",
+      "tags": [],
+      "file": "ribbed_rubber.usdz",
+      "source": "ribbed_rubber.usda",
+      "parts": [
+        "Knob"
+      ],
+      "mechanics": {
+        "detentsPerLine": 8,
+        "diameter": 0.034,
+        "friction": 0.25
+      },
+      "sound": {
+        "pitch": 1.0,
+        "body": 0.4,
+        "brightness": 0.2,
+        "decay": 0.5,
+        "ring": 0.0
+      },
+      "animation": {
+        "speed": 1.15
+      },
+      "palette": {}
+    },
+    {
+      "id": "disc",
+      "name": "Dimpled Disc",
+      "era": "1940s",
+      "summary": "Wide flat disc with chrome finger dimples. Long smooth turns.",
+      "tags": [],
+      "file": "disc.usdz",
+      "source": "disc.usda",
+      "parts": [
+        "Knob"
+      ],
+      "mechanics": {
+        "detentsPerLine": 4,
+        "diameter": 0.05,
+        "friction": 0.4
+      },
+      "sound": {
+        "pitch": 0.9,
+        "body": 0.6,
+        "brightness": 0.5,
+        "decay": 0.9,
+        "ring": 0.2
+      },
+      "animation": {
+        "speed": 0.95
+      },
+      "palette": {}
+    },
+    {
+      "id": "crank",
+      "name": "Crank Handle",
+      "era": "Workshop",
+      "summary": "A little crank with a walnut handle. Each line is a deliberate half turn.",
+      "tags": [],
+      "file": "crank.usdz",
+      "source": "crank.usda",
+      "parts": [
+        "Knob"
+      ],
+      "mechanics": {
+        "detentsPerLine": 2,
+        "diameter": 0.06,
+        "friction": 0.55,
+        "turnsPerLine": 0.5
+      },
+      "sound": {
+        "pitch": 0.9,
+        "body": 0.55,
+        "brightness": 0.6,
+        "decay": 1.0,
+        "ring": 0.3
+      },
+      "animation": {
+        "speed": 0.9
+      },
+      "palette": {}
+    }
+  ]
+}
