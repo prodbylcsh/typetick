@@ -126,6 +126,13 @@ public final class StageEnvironment {
         desk.position = SIMD3(0, -0.0005, 0)
     }
 
+    private func installEnvironment(_ img: CGImage, generation: Int, view: ARView) async {
+        guard generation == envGeneration,
+              let res = try? await EnvironmentResource(equirectangular: img) else { return }
+        guard generation == envGeneration else { return }
+        view.environment.lighting.resource = res
+    }
+
     /// Dust floating in the lamp light. Tiny additive specks drifting slowly.
     private func setUpMotes() {
         var p = ParticleEmitterComponent()
@@ -251,11 +258,8 @@ public final class StageEnvironment {
         let generation = envGeneration
         Task.detached(priority: .utility) {
             let img = ProceduralTextures.environmentHDR(env) ?? ProceduralTextures.environment(env)
-            await MainActor.run { [weak self, weak view] in
-                guard let self = self, let view = view, generation == self.envGeneration, let img = img,
-                      let res = try? EnvironmentResource.generate(fromEquirectangular: img) else { return }
-                view.environment.lighting.resource = res
-            }
+            guard let img = img else { return }
+            await self.installEnvironment(img, generation: generation, view: view)
         }
         lampWorldPosition = lampPos
         lampColor = SIMD3(Float(lampRGB.r), Float(lampRGB.g), Float(lampRGB.b)) * (env.lamp == .none ? 0 : 1)
@@ -286,8 +290,6 @@ public final class Stage {
     public init(turntable: Bool = false) {
         view = StageView(frame: NSRect(x: 0, y: 0, width: 800, height: 600))
         view.turntable = turntable
-        view.renderOptions.insert(.disableMotionBlur)
-        view.renderOptions.insert(.disableDepthOfField)
         post.install(on: view)
         anchor.addChild(environment.root)
         anchor.addChild(turntableRoot)
