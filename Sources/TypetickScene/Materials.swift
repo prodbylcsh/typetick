@@ -125,11 +125,15 @@ public enum Materials {
 
     private static var surfaceShader: CustomMaterial.SurfaceShader? = {
         guard let device = MTLCreateSystemDefaultDevice() else { return nil }
+        // Prefer a precompiled library if one was bundled, else compile the source now.
+        if let lib = try? device.makeDefaultLibrary(bundle: Bundle.module), lib.functionNames.contains("typetickSurface") {
+            return CustomMaterial.SurfaceShader(named: "typetickSurface", in: lib)
+        }
         do {
-            let lib = try device.makeDefaultLibrary(bundle: Bundle.module)
+            let lib = try device.makeLibrary(source: SurfaceShaderSource.source, options: nil)
             return CustomMaterial.SurfaceShader(named: "typetickSurface", in: lib)
         } catch {
-            NSLog("Typetick: surface shader library unavailable (\(error)); using plain PBR")
+            NSLog("Typetick: surface shader unavailable (\(error)); using plain PBR")
             return nil
         }
     }()
