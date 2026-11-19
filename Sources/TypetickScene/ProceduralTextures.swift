@@ -33,14 +33,19 @@ public enum ProceduralTextures {
         func wood(_ light: SIMD3<Float>, _ dark: SIMD3<Float>, rings: Float, figure: Float) -> (Int, Int) -> (SIMD3<Float>, Float, Float) {
             return { x, y in
                 let u = Float(x) / Float(size), v = Float(y) / Float(size)
-                let warp = n.fbm(u * 3, v * 0.6, octaves: 4, period: 3) * figure
-                let ringV = (u * rings * grain + warp * 6 + n.fbm(u * 8, v * 1.5, octaves: 3, period: 8) * 0.8)
-                let ring = 0.5 + 0.5 * sin(ringV * 2 * .pi)
-                let streak = n.fbm(u * 60 * grain, v * 2, octaves: 3, period: 60)
-                let t = pow(ring, 2.2) * 0.75 + streak * 0.35
+                let warp: Float = n.fbm(u * 3, v * 0.6, octaves: 4, period: 3) * figure
+                let wobble: Float = n.fbm(u * 8, v * 1.5, octaves: 3, period: 8) * 0.8
+                let ringV: Float = u * rings * grain + warp * 6 + wobble
+                let ring: Float = 0.5 + 0.5 * sin(ringV * 2 * Float.pi)
+                let streak: Float = n.fbm(u * 60 * grain, v * 2, octaves: 3, period: 60)
+                let ringT: Float = pow(ring, 2.2) * 0.75
+                let t: Float = ringT + streak * 0.35
                 let col = simd_mix(light, dark, SIMD3(repeating: min(1, t)))
                 let pores = n.value(u * 900, v * 40, period: 900) > 0.82 ? Float(0.08) : 0
-                return (col * (1 - pores), 1 - gloss * 0.7 + pores * 0.5 + streak * 0.08, ring * 0.3 + streak * 0.6 - pores * 2)
+                let r: Float = 1 - gloss * 0.7 + pores * 0.5 + streak * 0.08
+                let h: Float = ring * 0.3 + streak * 0.6 - pores * 2
+                let c: SIMD3<Float> = col * (1 - pores)
+                return (c, r, h)
             }
         }
 
@@ -55,11 +60,16 @@ public enum ProceduralTextures {
             tiles = 1.0
             sampler = { x, y in
                 let u = Float(x) / Float(size), v = Float(y) / Float(size)
-                let turb = n.fbm(u * 4, v * 4, octaves: 6, period: 4)
-                let vein = abs(sin((u * 3 + v * 2 + turb * 4) * .pi))
-                let t = pow(1 - vein, 8)
-                let base = SIMD3<Float>(0.90, 0.89, 0.86) - n.fbm(u * 12, v * 12, octaves: 3, period: 12) * 0.06
-                return (simd_mix(base, SIMD3(0.35, 0.36, 0.38), SIMD3(repeating: t)), 0.18 - gloss * 0.12 + t * 0.1, -t)
+                let turb: Float = n.fbm(u * 4, v * 4, octaves: 6, period: 4)
+                let phase: Float = (u * 3 + v * 2 + turb * 4) * Float.pi
+                let vein: Float = abs(sin(phase))
+                let t: Float = pow(1 - vein, 8)
+                let cloud: Float = n.fbm(u * 12, v * 12, octaves: 3, period: 12) * 0.06
+                let base = SIMD3<Float>(0.90, 0.89, 0.86) - SIMD3<Float>(repeating: cloud)
+                let veinColor = SIMD3<Float>(0.35, 0.36, 0.38)
+                let c: SIMD3<Float> = simd_mix(base, veinColor, SIMD3<Float>(repeating: t))
+                let r: Float = 0.18 - gloss * 0.12 + t * 0.1
+                return (c, r, -t)
             }
         case .slate:
             tiles = 1.2
@@ -77,14 +87,17 @@ public enum ProceduralTextures {
                 let pebble = pow(cells, 0.6)
                 let mott = n.fbm(u * 6, v * 6, octaves: 4, period: 6)
                 let base = SIMD3<Float>(0.24, 0.13, 0.07) * (0.75 + 0.5 * mott)
-                return (base * (0.85 + 0.15 * pebble), 0.55 - gloss * 0.25 + (1 - pebble) * 0.15, pebble)
+                let shade: Float = 0.85 + 0.15 * pebble
+                let r: Float = 0.55 - gloss * 0.25 + (1 - pebble) * 0.15
+                return (base * shade, r, pebble)
             }
         case .felt:
             tiles = 3
             sampler = { x, y in
                 let u = Float(x) / Float(size), v = Float(y) / Float(size)
                 let fuzz = n.fbm(u * 200, v * 200, octaves: 2, period: 200)
-                return (SIMD3(0.10, 0.24, 0.15) * (0.85 + 0.3 * fuzz), 0.98, fuzz * 0.4)
+                let shade: Float = 0.85 + 0.3 * fuzz
+                return (SIMD3<Float>(0.10, 0.24, 0.15) * shade, 0.98, fuzz * 0.4)
             }
         case .linoleum:
             tiles = 2
@@ -103,7 +116,8 @@ public enum ProceduralTextures {
                 let u = Float(x) / Float(size), v = Float(y) / Float(size)
                 let brush = n.fbm(u * 2, v * 300, octaves: 3, period: 2)
                 let g = 0.55 + brush * 0.15
-                return (SIMD3(g, g, g * 1.02), 0.32 - gloss * 0.2 + brush * 0.1, brush * 0.2)
+                let r: Float = 0.32 - gloss * 0.2 + brush * 0.1
+                return (SIMD3<Float>(g, g, g * 1.02), r, brush * 0.2)
             }
         case .concrete:
             tiles = 1.5
@@ -131,8 +145,11 @@ public enum ProceduralTextures {
                 let u = Float(x) / Float(size), v = Float(y) / Float(size)
                 let scratches = n.value(u * 2, v * 400, period: 2) > (1 - 0.05 * wear) ? Float(0.15) : 0
                 let wearMask = n.fbm(u * 3, v * 3, octaves: 3, period: 3) * wear
-                col = col * (1 + scratches * 0.4) + SIMD3(repeating: wearMask * 0.05)
-                r = r + wearMask * 0.25 + scratches * 0.2
+                let brighten: Float = 1 + scratches * 0.4
+                let lift = SIMD3<Float>(repeating: wearMask * 0.05)
+                col = col * brighten + lift
+                let extraRough: Float = wearMask * 0.25 + scratches * 0.2
+                r = r + extraRough
                 color.set(x, y, col)
                 rough.setGray(x, y, r)
                 heights[y * size + x] = h - scratches
@@ -164,10 +181,13 @@ public enum ProceduralTextures {
             let lat = (0.5 - Float(y) / Float(h)) * .pi            // +pi/2 up
             for x in 0..<width {
                 let lon = (Float(x) / Float(width)) * 2 * .pi - .pi  // 0 = -Z
-                var col = roomBase * (0.6 + 0.8 * ambient)
+                let amb: Float = 0.6 + 0.8 * ambient
+                var col: SIMD3<Float> = roomBase * amb
                 // floor darker, ceiling a bit lighter
-                col *= lat < 0 ? 0.55 : 1.0 + lat * 0.3
-                col += SIMD3(repeating: n.fbm(Float(x) / 64, Float(y) / 64, octaves: 3, period: 16) * 0.02)
+                let vertical: Float = lat < 0 ? 0.55 : 1.0 + lat * 0.3
+                col *= vertical
+                let speckle: Float = n.fbm(Float(x) / 64, Float(y) / 64, octaves: 3, period: 16) * 0.02
+                col += SIMD3<Float>(repeating: speckle)
                 // window on the left wall
                 if env.windowLight {
                     let dl = abs(lon - (-1.25)), dlat = abs(lat - 0.25)
@@ -176,20 +196,30 @@ public enum ProceduralTextures {
                         let brightness: Float = env.timeOfDay == .night ? 0.25 : 3.2
                         col = sky * brightness * mullion
                     } else {
-                        let d = sqrt(pow(dl / 0.9, 2) + pow(dlat / 0.7, 2))
-                        col += sky * max(0, 1 - d) * (env.timeOfDay == .night ? 0.05 : 0.35)
+                        let ax: Float = dl / 0.9, ay: Float = dlat / 0.7
+                        let d: Float = (ax * ax + ay * ay).squareRoot()
+                        let k: Float = env.timeOfDay == .night ? 0.05 : 0.35
+                        let w: Float = max(0, 1 - d) * k
+                        col += sky * w
                     }
                     if env.timeOfDay != .night {
-                        let ds = sqrt(pow(lon + 1.3, 2) + pow(lat - 0.45, 2))
-                        col += sun * max(0, 1 - ds * 6) * 6
+                        let sx: Float = lon + 1.3, sy: Float = lat - 0.45
+                        let ds: Float = (sx * sx + sy * sy).squareRoot()
+                        let w: Float = max(0, 1 - ds * 6) * 6
+                        col += sun * w
                     }
                 }
                 // lamp glow up and to the right
                 if env.lamp != .none {
-                    let dl = sqrt(pow(lon - 0.65, 2) + pow(lat - 0.55, 2))
-                    col += lamp * Float(env.lampIntensity) * (max(0, 1 - dl * 3.5) * 4 + max(0, 1 - dl * 12) * 18)
+                    let lx: Float = lon - 0.65, ly: Float = lat - 0.55
+                    let dl: Float = (lx * lx + ly * ly).squareRoot()
+                    let glow: Float = max(0, 1 - dl * 3.5) * 4
+                    let bulb: Float = max(0, 1 - dl * 12) * 18
+                    let w: Float = Float(env.lampIntensity) * (glow + bulb)
+                    col += lamp * w
                 }
-                bmp.set(x, y, col / (col + 1) * 1.25)   // soft tone map into 8 bit
+                let mapped: SIMD3<Float> = col / (col + SIMD3<Float>(repeating: 1))
+                bmp.set(x, y, mapped * 1.25)   // soft tone map into 8 bit
             }
         }
         return bmp.makeImage()
@@ -256,73 +286,92 @@ extension ProceduralTextures {
         case .dusk: skyTop = SIMD3(0.25, 0.25, 0.55); skyLow = SIMD3(1.0, 0.45, 0.25); skyI = 2.5
         case .night: skyTop = SIMD3(0.01, 0.015, 0.04); skyLow = SIMD3(0.05, 0.03, 0.08); skyI = 1
         }
-        let wallBase = SIMD3<Float>(0.62, 0.52, 0.40) * (night ? 0.03 : 0.10) * amb
+        let wallScale: Float = (night ? 0.03 : 0.10) * amb
+        let wallBase: SIMD3<Float> = SIMD3<Float>(0.62, 0.52, 0.40) * wallScale
         // bookcase spines behind the typist
         var books: [(Float, Float, Float, SIMD3<Float>)] = []   // lon0, lon1, top lat, color
         var lon: Float = 2.3
         while lon < 4.0 {
-            let wdt = 0.02 + rng.unit() * 0.035
-            let col = SIMD3<Float>(0.2 + rng.unit() * 0.6, 0.12 + rng.unit() * 0.3, 0.08 + rng.unit() * 0.3)
-            books.append((lon, lon + wdt, 0.05 + rng.unit() * 0.12, col))
+            let wdt: Float = 0.02 + rng.unit() * 0.035
+            let cr: Float = 0.2 + rng.unit() * 0.6
+            let cg: Float = 0.12 + rng.unit() * 0.3
+            let cb: Float = 0.08 + rng.unit() * 0.3
+            let top: Float = 0.05 + rng.unit() * 0.12
+            books.append((lon, lon + wdt, top, SIMD3<Float>(cr, cg, cb)))
             lon += wdt + 0.003
         }
         // city lights for night windows
         var city: [(SIMD2<Float>, SIMD3<Float>, Float)] = []
         for _ in 0..<140 {
-            let c: SIMD3<Float> = [SIMD3(1, 0.25, 0.6), SIMD3(0.2, 0.9, 1), SIMD3(1, 0.8, 0.4), SIMD3(0.6, 0.3, 1)][Int(rng.unit() * 3.99)]
-            city.append((SIMD2(-1.25 + (rng.unit() - 0.5) * 0.85, 0.02 + rng.unit() * 0.45), c, 0.004 + rng.unit() * 0.01))
+            let palette: [SIMD3<Float>] = [SIMD3<Float>(1, 0.25, 0.6), SIMD3<Float>(0.2, 0.9, 1), SIMD3<Float>(1, 0.8, 0.4), SIMD3<Float>(0.6, 0.3, 1)]
+            let c: SIMD3<Float> = palette[Int(rng.unit() * 3.99)]
+            let cx: Float = -1.25 + (rng.unit() - 0.5) * 0.85
+            let cy: Float = 0.02 + rng.unit() * 0.45
+            let size: Float = 0.004 + rng.unit() * 0.01
+            city.append((SIMD2<Float>(cx, cy), c, size))
         }
         for y in 0..<h {
-            let lat = (0.5 - (Float(y) + 0.5) / Float(h)) * .pi
+            let lat: Float = (0.5 - (Float(y) + 0.5) / Float(h)) * Float.pi
             for x in 0..<w {
-                let lo = ((Float(x) + 0.5) / Float(w)) * 2 * .pi - .pi
+                let lo: Float = ((Float(x) + 0.5) / Float(w)) * 2 * Float.pi - Float.pi
                 var c: SIMD3<Float>
                 if lat < -0.08 {
                     // floor boards
-                    let board = n.fbm(lo * 30, lat * 3, octaves: 3, period: 64)
-                    c = SIMD3(0.30, 0.17, 0.09) * (0.5 + board) * (night ? 0.02 : 0.06) * amb
+                    let board: Float = n.fbm(lo * 30, lat * 3, octaves: 3, period: 64)
+                    let k: Float = (0.5 + board) * (night ? 0.02 : 0.06) * amb
+                    c = SIMD3<Float>(0.30, 0.17, 0.09) * k
                 } else if lat > 1.15 {
                     c = wallBase * 0.8
                 } else {
-                    let plaster = 0.85 + 0.3 * n.fbm(lo * 12, lat * 12, octaves: 4, period: 64)
+                    let plaster: Float = 0.85 + 0.3 * n.fbm(lo * 12, lat * 12, octaves: 4, period: 64)
                     c = wallBase * plaster
                     if lat < 0.25 { c *= 0.7 }   // wainscot
                 }
                 // bookcase
-                let l2 = lo < 0 ? lo + 2 * .pi : lo
+                let l2: Float = lo < 0 ? lo + 2 * Float.pi : lo
                 if l2 >= 2.3 && l2 < 4.0 && lat > 0.2 && lat < 0.42, let b = books.first(where: { l2 >= $0.0 && l2 < $0.1 && lat < $0.2 + 0.25 }) {
-                    c = b.3 * (night ? 0.01 : 0.05) * amb * (0.7 + 0.6 * n.value(l2 * 300, lat * 20, period: 512))
+                    let grain: Float = 0.7 + 0.6 * n.value(l2 * 300, lat * 20, period: 512)
+                    let k: Float = (night ? 0.01 : 0.05) * amb * grain
+                    c = b.3 * k
                 }
                 // window on the left wall
                 if env.windowLight || night {
-                    let dl = lo - (-1.25), dlat = lat - 0.28
+                    let dl: Float = lo + 1.25
+                    let dlat: Float = lat - 0.28
                     if abs(dl) < 0.42 && abs(dlat) < 0.33 {
-                        let t = (dlat + 0.33) / 0.66
-                        var sky = simd_mix(skyLow, skyTop, SIMD3(repeating: t)) * skyI
+                        let t: Float = (dlat + 0.33) / 0.66
+                        let grad: SIMD3<Float> = simd_mix(skyLow, skyTop, SIMD3<Float>(repeating: t))
+                        var sky: SIMD3<Float> = grad * skyI
                         if night {
                             for cl in city where abs(cl.0.x - lo) < cl.2 && abs(cl.0.y - lat) < cl.2 * 1.6 {
                                 sky += cl.1 * 6
                             }
                             // a big neon sign across the street
-                            if abs(lat - 0.18) < 0.012 && lo > -1.45 && lo < -1.1 { sky += SIMD3(1, 0.15, 0.55) * 14 }
+                            if abs(lat - 0.18) < 0.012 && lo > -1.45 && lo < -1.1 { sky += SIMD3<Float>(14, 2.1, 7.7) }
                         }
                         if env.timeOfDay != .night {
-                            let ds = simd_length(SIMD2(lo + 1.32, lat - 0.42))
-                            sky += SIMD3(1, 0.9, 0.75) * max(0, 1 - ds * 9) * (env.timeOfDay == .day ? 120 : 40)
+                            let ds: Float = simd_length(SIMD2<Float>(lo + 1.32, lat - 0.42))
+                            let peak: Float = env.timeOfDay == .day ? 120 : 40
+                            let w: Float = max(0, 1 - ds * 9) * peak
+                            sky += SIMD3<Float>(1, 0.9, 0.75) * w
                         }
                         let mullion = abs(dl) < 0.008 || abs(dlat) < 0.006 || abs(dl) > 0.41 || abs(dlat) > 0.32
                         c = mullion ? wallBase * 0.4 : sky
                     } else {
                         // daylight spilling around the window
-                        let d = simd_length(SIMD2(dl / 1.2, dlat / 0.9))
-                        c += simd_mix(skyLow, skyTop, SIMD3(repeating: 0.5)) * skyI * 0.05 * max(0, 1 - d)
+                        let d: Float = simd_length(SIMD2<Float>(dl / 1.2, dlat / 0.9))
+                        let mid: SIMD3<Float> = simd_mix(skyLow, skyTop, SIMD3<Float>(repeating: 0.5))
+                        let w: Float = skyI * 0.05 * max(0, 1 - d)
+                        c += mid * w
                     }
                 }
                 // the lamp (up and to the left/back of the machine)
                 if env.lamp != .none {
-                    let ds = simd_length(SIMD2(lo + 0.95, lat - 0.55))
-                    c += lamp * lampI * (max(0, 1 - ds * 6) * 1.5 + max(0, 1 - ds * 28) * 60)
-                    if env.lamp == .neon && abs(lat - 0.35) < 0.01 && lo > 0.4 && lo < 1.2 { c += lamp * 18 * lampI }
+                    let ds: Float = simd_length(SIMD2<Float>(lo + 0.95, lat - 0.55))
+                    let glow: Float = max(0, 1 - ds * 6) * 1.5
+                    let bulb: Float = max(0, 1 - ds * 28) * 60
+                    c += lamp * (lampI * (glow + bulb))
+                    if env.lamp == .neon && abs(lat - 0.35) < 0.01 && lo > 0.4 && lo < 1.2 { c += lamp * (18 * lampI) }
                 }
                 let i = (y * w + x) * 4
                 px[i] = c.x; px[i + 1] = c.y; px[i + 2] = c.z; px[i + 3] = 1
