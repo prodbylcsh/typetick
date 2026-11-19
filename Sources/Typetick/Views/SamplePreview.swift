@@ -12,7 +12,7 @@ struct SamplePreview: View {
     var spec: MachineSpec
     @State private var image: CGImage?
 
-    private static let lines = [
+    nonisolated private static let lines = [
         "The quick brown fox jumps over",
         "the lazy dog. 0123456789 &$%@",
         "",

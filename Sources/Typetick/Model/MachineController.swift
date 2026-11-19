@@ -280,8 +280,8 @@ final class MachineController {
             perform(.correct(key))
         case 49: perform(.space)
         case 53: clearSelection()
-        case 123: shiftSel ? extendSelection(dx: -1, dy: 0) : perform(.backspace)
-        case 124: shiftSel ? extendSelection(dx: 1, dy: 0) : perform(.space)
+        case 123: if shiftSel { extendSelection(dx: -1, dy: 0) } else { perform(.backspace) }
+        case 124: if shiftSel { extendSelection(dx: 1, dy: 0) } else { perform(.space) }
         case 125:
             if shiftSel { extendSelection(dx: 0, dy: 2) } else { perform(.rollPlaten(lines: mods.contains(.option) ? 0.5 : 1)) }
         case 126:
